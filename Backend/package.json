@@ -15,8 +15,12 @@
   "type": "commonjs",
   "main": "Server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Server.js",
+    "dev": "nodemon Server.js",
+    "seed" : "node seed.js "
   },
+  
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
