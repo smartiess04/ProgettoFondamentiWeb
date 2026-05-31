@@ -1,6 +1,6 @@
 const mongoose= require ("mongoose");
 
-const UserSchema= mongoose.Schema({
+const userModel= mongoose.Schema({
     name: {
         type: String,
         required: [true,'Inserire il nome'],
@@ -38,3 +38,5 @@ const UserSchema= mongoose.Schema({
         Defaul: Date.now
     }
 });
+
+module.exports= mongoose.model('User',userModel)
