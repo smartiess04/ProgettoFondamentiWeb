@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const modelReadingProgress = new mongoose.Schema({
+const readingProgressSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -13,12 +13,17 @@ const modelReadingProgress = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['da_leggere' , 'in_lettura', 'completato']
+        enum: ['da_leggere' , 'in_lettura', 'completato'],
+        default: 'da_leggere'
     },
     pagesRead:{
-        type: Number
+        type: Number,
+        default: 0
     },
     updatedAt: {
-        type: Date
+        type: Date,
+        default: Date.now
     }
 })
+
+module.exports = mongoose.model("Reading Progress", readingProgressSchema)

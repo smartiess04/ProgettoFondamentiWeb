@@ -8,7 +8,14 @@ const chatSchema = new mongoose.Schema({
     },
 
     partecipants: [{
-        
-    }]
+        type:  mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
 
+    createdAt: {
+        type: Data,
+        default: Date.now
+    }
 })
+
+module.exports = mongoose.model("Chat", chatSchema)
