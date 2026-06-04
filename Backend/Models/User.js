@@ -1,4 +1,5 @@
 const mongoose= require ("mongoose");
+const bcrypt= require ('bcrypt');
 
 const userModel= new mongoose.Schema({
     name: {
@@ -34,10 +35,30 @@ const userModel= new mongoose.Schema({
         type: String,
         enum: ['Classici','Fantasy','Gialli','Sci-fi','Romantici','Storici','Biografici','Psicologia']
     },
+    bio:{
+        type: String,
+        default: ' '
+    },
+
     createdAt:{
         type: Date,
         default: Date.now
     }
 });
+
+//Per intercettare il salvataggio della Password, che viene hashata
+userModel.pre("save",function (next) {
+    let user= this;
+    bcrypt.hash(user.password,10)
+    .then(hash=>{user.password=hash
+        next();
+    })
+});
+
+//Per il login
+userModel.methods.passwordComparison= function(inputPassword){
+    let user= this;
+    return bcrypt.compare(inputPassword,user.password)
+};
 
 module.exports= mongoose.model('User',userModel)
