@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-
 const User = require('../models/User');
 
 // Metodo per registrare un nuovo utente
