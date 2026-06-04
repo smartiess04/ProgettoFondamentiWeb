@@ -38,12 +38,11 @@ const userModel= new mongoose.Schema({
     bio:{
         type: String,
         default: ' '
-    },
-
-    createdAt:{
-        type: Date,
-        default: Date.now
     }
+    }, {
+        timestamps: true //per aggiungere automaticamente i campi createdAt e updatedAt al modello, che tengono traccia della data di creazione e dell'ultima modifica di ogni documento utente
+
+    
 });
 
 //Per intercettare il salvataggio della Password, che viene hashata
@@ -56,9 +55,9 @@ userModel.pre("save",function (next) {
 });
 
 //Per il login
-userModel.methods.passwordComparison= function(inputPassword){
+userModel.methods.passwordComparison= async function(inputPassword){
     let user= this;
-    return bcrypt.compare(inputPassword,user.password)
+    return await bcrypt.compare(inputPassword, this.password)
 };
 
 module.exports= mongoose.model('User',userModel)
