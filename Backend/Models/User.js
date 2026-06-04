@@ -1,6 +1,6 @@
 const mongoose= require ("mongoose");
 
-const userModel= mongoose.Schema({
+const userModel= new mongoose.Schema({
     name: {
         type: String,
         required: [true,'Inserire il nome'],
@@ -32,11 +32,11 @@ const userModel= mongoose.Schema({
     },
     prefererenzeGenere: {
         type: String,
-        enum: [Classici,Fantasy,Gialli,Sci-fi,Romantici,Storici,Biografici,Psicologia]
+        enum: ['Classici','Fantasy','Gialli','Sci-fi','Romantici','Storici','Biografici','Psicologia']
     },
     createdAt:{
         type: Date,
-        Defaul: Date.now
+        default: Date.now
     }
 });
 

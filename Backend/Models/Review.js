@@ -1,6 +1,6 @@
 const mongoose= require('mongoose')
 
-const reviewModel= mongoose.Schema({
+const reviewModel= new mongoose.Schema({
     bookId: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Book',

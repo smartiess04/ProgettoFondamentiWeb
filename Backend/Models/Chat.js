@@ -2,7 +2,7 @@ const mongoose = require ('mongoose');
 
 const chatSchema = new mongoose.Schema({
     bookId: {
-        type: mongoose.Schema.types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Book',
         required: true
     },
@@ -13,7 +13,7 @@ const chatSchema = new mongoose.Schema({
     }],
 
     createdAt: {
-        type: Data,
+        type: Date,
         default: Date.now
     }
 })
