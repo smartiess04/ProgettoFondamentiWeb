@@ -10,7 +10,7 @@ const connectDB = require("./config/db");
 const cookieParser= require (`cookie-parser`);
 
 app.use(express.json()); //intercetta e tarduce oggetto greezzo per metterlo in req.body
-app.use(cookiePareser()); //JWT va nel cookie
+app.use(cookieParser()); //JWT va nel cookie
 
 connectDB();
 //monto le rotte
