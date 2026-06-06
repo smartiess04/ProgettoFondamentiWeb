@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const refreshToken= require('../models/RefreshToken');
 const User = require('../models/User');
 const cookieParser= require ('cookie-parser');
+const RefreshToken = require('../models/RefreshToken');
 
 
 // Metodo per registrare un nuovo utente
@@ -85,14 +86,14 @@ async function login(req, res) {
     }
 
     //Invio RefreshToken tramite Cookie HTTP-only
-    res.Cookie('jwt_refresh',refreshTokenString,{
+    res.cookie('jwt_refresh',refreshTokenString,{
         ...cookieOptions,
         path: "api/v1/auth/refresh",
         maxAge: 7*24*60*60*1000  
     });
      
     //Invio AccessToken nel corpo della richiesta
-    res.Cookie('jwt_access',accessToken,{
+    res.cookie('accessToken',accessToken,{
         ...cookieOptions,
         maxAge: 15*60*1000
     })
@@ -111,25 +112,81 @@ async function login(req, res) {
 
 async function refresh(req,res){
     try{
+        const cookieRefresh = req.cookies.refreshToken;
+        
+        // controllo se il cookie relativo al Refresh Token esiste
+        if(!cookieRefresh){
+            return res.status(401).json({message: 'Session expired. Login again'});
+        }
+        
+        // Adesso so che esiste quindi vado a prenderlo dal db
+        const dbRefresh = await RefreshToken.findOne({token: cookieRefresh});
 
-    }catch{
+        // Controllo se sono riuscito a prelevarlo correttamente dal db, oppure se è stato cancellato perchè l'utente ha fatto logout
+        if(!dbRefresh){
+            return res.status(403).json({message: 'Invalid or revoked session'})
+        }
 
+        // Verifico l'integrità del token usando la chiave segreta del refresh
+        const decoded = jwt.verify(cookieRefresh, process.env.REFRESH_SECRET);
+
+        // Se è tutto valido genero il nuovo access Token
+        const newAccessToken = jwt.sign(
+            { userId: decoded.userId },
+            process.env.JWT_SECRET,
+            { expiresIn: '15m' }
+        );
+
+        //Aggiorno il Cookie dell'access token
+        res.cookie('accessToken', newAccessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 15*60*1000
+        });
+
+        return res.status(200).json({ message: 'token successfully updated' });
+
+    }catch(error) {
+        return res.status(403).json({ message: 'Invalid or expired Refresh token', error});
     }
-
-
 }
 
 async function logout(req,res){
     try{
-        
+        const refreshCookie = req.cookies.refreshToken;
 
-    }catch{
+        // Se il Refresh token esiste lo revoca dal db
+        if(refreshCookie) {
+            await RefreshToken.deleteOne({ token: refreshCookie});
+        }
 
+
+        //Ripuliamo il browser dall'access cookie e dal refresh cookie
+
+        res.clearCookie('accessToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax'
+        });
+
+        res.clearCookie('refreshToken', {
+            path: '/api/v1/auth/refresh', 
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax'
+        });
+
+        return res.status(200).json({ message: 'Successful logout'});
+
+    }catch(error){
+        return res.status(500).json({ message: 'Error during logout', error});
     }
-
 }
 
 module.exports = {
     register, 
     login,
+    logout,
+    refresh
 };
