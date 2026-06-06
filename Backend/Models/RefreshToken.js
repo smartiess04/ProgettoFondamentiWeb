@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 
-const refreshTokenModel= new mongoose.Schema({
+const refreshTokenSchema= new mongoose.Schema({
     userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', // Collegamento al modello Utente
@@ -25,4 +25,4 @@ const refreshTokenModel= new mongoose.Schema({
 // l'orario corrente supera il valore di 'expiresAt'.
 refreshTokenSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
-module.exports= mongoose.model("RefreshToken",refreshTokenModel)
+module.exports= mongoose.model("RefreshToken",refreshTokenSchema)

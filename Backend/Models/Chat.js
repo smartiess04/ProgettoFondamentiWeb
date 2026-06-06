@@ -7,15 +7,12 @@ const chatSchema = new mongoose.Schema({
         required: true
     },
 
-    partecipants: [{
+    participants: [{
         type:  mongoose.Schema.Types.ObjectId,
         ref: 'User',
-    }],
-
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+    }]
+},{
+    timestamps: true
 })
 
 module.exports = mongoose.model("Chat", chatSchema)

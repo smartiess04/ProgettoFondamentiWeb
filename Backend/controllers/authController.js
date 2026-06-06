@@ -1,9 +1,6 @@
 const jwt = require('jsonwebtoken');
-const refreshToken= require('../models/RefreshToken');
+const RefreshToken= require('../models/RefreshToken');
 const User = require('../models/User');
-const cookieParser= require ('cookie-parser');
-const RefreshToken = require('../models/RefreshToken');
-
 
 // Metodo per registrare un nuovo utente
 async function register(req, res) {
@@ -49,7 +46,7 @@ async function login(req, res) {
         const {email, password} = req.body;
 
         //cercare utente a cui corrisponde tale email
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }).select('+password');
 
         //se l'utente non esite
         if (!user){
@@ -66,29 +63,28 @@ async function login(req, res) {
 //TOKEN
 
     const accessToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
-    const refreshToken= jwt.sign({userId:user._id},process.env.REFRESH_SECRET, {expiresIn: '7d'});
+    const refreshTokenStringa= jwt.sign({userId:user._id},process.env.REFRESH_SECRET, {expiresIn: '7d'});
     
     //salvo refresh token nel database per un possibile revok al logout
     const expiresAt= new Date();
     expiresAt.setDate(expiresAt.getDate() + 7);
     
-    await refreshToken.create({
+    await RefreshToken.create({
     userId: user._id,
-    token: refreshTokenString,
+    token: refreshTokenStringa,
     expiresAt: expiresAt
     });
 
     const cookieOptions= {
         httpOnly: true,
-        secure: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
     }
 
     //Invio RefreshToken tramite Cookie HTTP-only
-    res.cookie('jwt_refresh',refreshTokenString,{
+    res.cookie('refreshToken',refreshTokenStringa,{
         ...cookieOptions,
-        path: "api/v1/auth/refresh",
+        path: "/api/v1/auth/refresh",
         maxAge: 7*24*60*60*1000  
     });
      
@@ -112,7 +108,7 @@ async function login(req, res) {
 
 async function refresh(req,res){
     try{
-        const cookieRefresh = req.cookies.refreshToken;
+        const cookieRefresh = req.cookies?.refreshToken;
         
         // controllo se il cookie relativo al Refresh Token esiste
         if(!cookieRefresh){
@@ -154,7 +150,7 @@ async function refresh(req,res){
 
 async function logout(req,res){
     try{
-        const refreshCookie = req.cookies.refreshToken;
+        const refreshCookie = req.cookies?.refreshToken;
 
         // Se il Refresh token esiste lo revoca dal db
         if(refreshCookie) {
@@ -167,14 +163,14 @@ async function logout(req,res){
         res.clearCookie('accessToken', {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax'
+            sameSite: 'Strict'
         });
 
         res.clearCookie('refreshToken', {
             path: '/api/v1/auth/refresh', 
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax'
+            sameSite: 'Strict'
         });
 
         return res.status(200).json({ message: 'Successful logout'});

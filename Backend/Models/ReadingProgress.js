@@ -1,12 +1,12 @@
 const mongoose = require("mongoose")
 
 const readingProgressSchema = new mongoose.Schema({
-    userID: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    bookID: {
+    bookId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book', 
         required: true
@@ -19,11 +19,9 @@ const readingProgressSchema = new mongoose.Schema({
     pagesRead:{
         type: Number,
         default: 0
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
     }
+},{
+    timestamps: true
 })
 
-module.exports = mongoose.model("Reading Progress", readingProgressSchema)
+module.exports = mongoose.model("ReadingProgress", readingProgressSchema)

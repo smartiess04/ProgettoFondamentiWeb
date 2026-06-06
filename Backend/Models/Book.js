@@ -21,7 +21,8 @@ const bookSchema = new mongoose.Schema({
         type: String
     },
     isbn : {
-        type: String
+        type: String,
+        unique: true
     },
     copertinaURL: {
         type: String
@@ -32,7 +33,8 @@ const bookSchema = new mongoose.Schema({
     linkAcquisto: {
         type: String
     }
-
+},{
+    timestamps: true
 })
 
 module.exports = mongoose.model("Book" , bookSchema)

@@ -1,20 +1,20 @@
-const express = require("express");
-const app = express();
-const port = 3000;
-
 const dotenv = require("dotenv");
 dotenv.config();
-const mongoose = require("mongoose");
-const connectDB = require("./config/db");
 
-const cookieParser= require (`cookie-parser`);
+const express = require("express");
+const connectDB = require("./config/db");
+const cookieParser= require ("cookie-parser");
+const authRoutes= require("./routes/authRoutes");
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+connectDB();
 
 app.use(express.json()); //intercetta e tarduce oggetto greezzo per metterlo in req.body
 app.use(cookieParser()); //JWT va nel cookie
 
-connectDB();
 //monto le rotte
-const authRoutes= require(`./routes/authRoutes`);
 app.use(`/api/v1/auth`,authRoutes);
 
 app.get("/", (req, res) => {

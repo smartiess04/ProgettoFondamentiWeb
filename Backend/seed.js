@@ -27,7 +27,7 @@ async function seed() {
         await ReadingProgress.deleteMany({});
         console.log('Collezioni svuotate');
 
-        const Francesca = await User.create({
+        const francesca = await User.create({
             name: 'Francesa',
             username: 'FraLoca',
             email: 'francesca@example.com',
@@ -38,7 +38,7 @@ async function seed() {
             bio: 'Amo leggere e condividere le mie opinioni sui libri!',
         });
         
-        console.log('Utente creato:', Francesca.username);
+        console.log('Utente creato:', francesca.username);
 
 
         const books= [
@@ -77,7 +77,7 @@ async function seed() {
             }
           ]
         const createdBooks= await Book.insertMany(books);
-        console.log(`Created at ${createdBooks.length} books`);
+        console.log(`Created ${createdBooks.length} books`);
 
         const reviews = [
             {
@@ -106,7 +106,7 @@ async function seed() {
         const createdReviews= await Review.insertMany(reviews);
         console.log(`Created ${reviews.length} reviews`);
 
-      console.log(`Databes Completed`);
+      console.log(`Database Completed`);
       await mongoose.connection.close();
        } catch (error) {
             console.error('Errore durante il seed:', error);
