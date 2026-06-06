@@ -62,14 +62,14 @@ async function login(req, res) {
 
     //generare il JWT da legare all'ID dell'utente 
 
-    const tokenSessione = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const tokenSessione = jwt.sign({ userId: User._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     res.status(200).json({
         token,
         user: {
-            id: user._id,
-            username: user.username,
-            email: user.email,
+            id: User._id,
+            username: User.username,
+            email: User.email,
         }
     });
 
