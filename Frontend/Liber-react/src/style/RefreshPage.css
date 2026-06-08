@@ -1,12 +1,13 @@
 .sfondo-container{
-  background-image: url(../assets/Backgorundrefresh.jpeg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../assets/Backgorundrefresh.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* Inchioda la grandezza allo schermo */
   height: 100vh;
   width: 100vw;
-  background-attachment: fixed;
-  z-index: -1;
+  position: relative; /* Fa da gabbia per gli elementi con position: absolute */
+  overflow: hidden;   /* Taglia via qualsiasi cosa sbrodoli fuori dallo schermo */
  }
 
  .nav-refresh {
@@ -51,10 +52,44 @@
   background-color: transparent;
   color: aliceblue;
   padding: 8px 18px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
 }
 .btn-refresh:hover{
   color: brown;
   border-color: brown;
+}
+
+.footer-refresh{
+  font-size: medium;
+  font:italic;
+  position: absolute;
+  bottom: 0; /* Lo incolla al pavimento dello schermo */
+  left: 0;
+  width: 100%; /* Gli fa occupare tutta la larghezza */
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.6); /* Sfondo scuro per farlo leggere sulla foto */
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+.titoli-refresh {
+  color: white;
+  font-size: x-large;
+  font-style: italic;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 90%; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; 
+  
 }
 
 
