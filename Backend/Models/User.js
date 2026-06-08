@@ -45,13 +45,19 @@ const userModel= new mongoose.Schema({
     
 });
 
+
 //Per intercettare il salvataggio della Password, che viene hashata
 userModel.pre("save",function (next) {
     let user= this;
-    bcrypt.hash(user.password,10)
+    if(!user.isModified(password)){
+        return next()
+    }
+    else {bcrypt.hash(user.password,10)
     .then(hash=>{user.password=hash
         next();
     })
+    .catch(error=> {console.error(error)})
+}
 });
 
 //Per il login
@@ -60,4 +66,4 @@ userModel.methods.passwordComparison= async function(inputPassword){
     return await bcrypt.compare(inputPassword, this.password)
 };
 
-module.exports= mongoose.model('User',userModel)
+module.exports= mongoose.model('User',userModel) 
