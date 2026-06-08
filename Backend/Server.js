@@ -20,6 +20,7 @@ app.use(`/api/v1/auth`,authRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
 app.listen(port, () => {
   console.log(`App in ascolto su porta ${port}`);
 });

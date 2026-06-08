@@ -18,11 +18,8 @@ async function register(req, res) {
             return res.status(400).json({ message: 'Username or email already exists' });
         }
 
-        //4.crea un nuovo utente con i dati forniti (username, email e password)
-        const newUser = new User({ username, email, password });
-
-        //5.salva il nuovo utente nel database
-        await newUser.save();
+        //4.crea un nuovo utente con i dati forniti (username, email e password), salva il nuovo utente nel database
+        const newUser = await User.create({username,email,password})
 
     //restituisce una risposta di successo al client con un messaggio e i dati dell'utente appena registrato (id, username e email)
         res.status(201).json({
