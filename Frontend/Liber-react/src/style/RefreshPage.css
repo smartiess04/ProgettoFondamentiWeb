@@ -1,0 +1,62 @@
+.sfondo-container{
+  background-image: url(../assets/Backgorundrefresh.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-attachment: fixed;
+  z-index: -1;
+ }
+
+ .nav-refresh {
+  display: flex; /* Mette gli elementi in riga orizzontale */
+  justify-content: space-between; /* Spinge il logo a sinistra e i bottoni a destra */
+  align-items: center; /* Centra tutto verticalmente */
+  width: 100%;
+  padding: 20px 50px; /* Spazio interno: 20px sopra/sotto, 50px ai lati */
+  background-color: rgba(0, 0, 0, 0.4); /* Uno sfondo scuro semi-trasparente per far risaltare la barra */
+  box-sizing: border-box; /* Evita che il padding faccia sbordare la navbar fuori dallo schermo */
+}
+
+/* Stili per la parte sinistra (Logo + Titolo) */
+.nav-sinistra {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Spazio tra l'icona del logo e la scritta "Liber" */
+}
+
+.titolo-app {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Stili per la parte destra (Lista dei link) */
+.nav-destra {
+  display: flex;
+  list-style: none; /* Rimuove i fastidiosi puntini elenco (bullet points) */
+  gap: 20px; /* Spazio tra il bottone Login e Registrati */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-refresh{
+  border: 1px solid whitesmoke;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: x-large;
+  background-color: transparent;
+  color: aliceblue;
+  padding: 8px 18px;
+}
+.btn-refresh:hover{
+  color: brown;
+  border-color: brown;
+}
+
+
+  
+
