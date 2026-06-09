@@ -1,4 +1,3 @@
-import React from 'react'
 import  '../style/RefreshPage.css'
 import Logo from "../components/Logo"
 
