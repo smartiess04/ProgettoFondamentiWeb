@@ -32,9 +32,7 @@ export default function RefreshPage(){
             </h3>
             
             
-            <footer className='footer-refresh'>
-                <p>Corso di Fondamenti Web 25/26 Martina Cataleta, Francesca Teresa Rosa Augello, Giuseppe Galetta</p>
-            </footer>
+            
 
         </div>
         

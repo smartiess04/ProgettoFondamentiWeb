@@ -1,12 +1,17 @@
 import {useState} from "react"
 import { Link, useNavigate } from "react-router-dom"
 import "../style/LoginPage.css"
+import { useAuth } from "../context/AuthContext";
 
 
-export default function LoginPage(){
+export default function LoginPage() { 
+    const { login, register } = useAuth();
     const [isRegister, setIsRegister] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
 
     async function submitHandler(e){
@@ -38,17 +43,17 @@ export default function LoginPage(){
                             {isRegister && (
                                 <div className="campo-form">
                                 <label htmlFor="username">Username:</label>
-                                <input type= "text" name="username"></input>
+                                <input id="username" value={username} onChange={e => setUsername(e.target.value)} required type= "text" name="username"></input>
                             </div>
 
                             )}
                             <div className="campo-form">
                                 <label htmlFor="email">Email:</label>
-                                <input type= "text" name="email"></input>
+                                <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required type= "text" name="email"></input>
                             </div>
                             <div className="campo-form">
                                 <label htmlFor="password">Password:</label>
-                                <input type="text" name="password"></input>
+                                <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} minLength={6} required type="text" name="password"></input>
                             </div>
                             <button className="btn-accedi" type="sumbit">{isRegister? "Registrati": "Accedi"}</button>
                         </form>

@@ -19,9 +19,13 @@ function App() {
      </Routes>
     </BrowserRouter>
   
-      
+     <footer className='footer'>
+                <p>Corso di Fondamenti Web 25/26 Martina Cataleta, Francesca Teresa Rosa Augello, Giuseppe Galetta</p>
+            </footer> 
     </>
   )
 }
+
+
 
 export default App

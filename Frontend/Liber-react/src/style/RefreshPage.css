@@ -72,18 +72,7 @@
   color:whitesmoke;
 }
 
-.footer-refresh{
-  font-size: medium;
-  position: absolute;
-  bottom: 0; /* Lo incolla al pavimento dello schermo */
-  left: 0;
-  width: 100%; /* Gli fa occupare tutta la larghezza */
-  padding: 0px;
-  background-color: rgba(0, 0, 0, 0.6); /* Sfondo scuro per farlo leggere sulla foto */
-  color: white;
-  text-align: center;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
+
 
 .titoli-refresh {
   color: white;
