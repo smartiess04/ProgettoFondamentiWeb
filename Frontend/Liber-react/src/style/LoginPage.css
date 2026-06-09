@@ -11,16 +11,77 @@
   position: relative; /* Fa da gabbia per gli elementi con position: absolute */
   overflow: hidden;   /* Taglia via qualsiasi cosa sbrodoli fuori dallo schermo */
   display: flex;
-  justify-content: center; /* Centra orizzontalmente */
-  align-items: center;     /* Centra verticalmente */
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   min-height: 100vh; 
   width: 100vw; /* E 100vw per "prendi tutta la larghezza" */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+header {
+  width: 100%;
+}
+
+.nav-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 50px;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.nav-sinistra {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.titolo-app {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.titolo-app:hover{
+  cursor: pointer;
+  color: yellowgreen;
+}
+
+.nav-destra {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-to-refresh{
+  border: 1px solid whitesmoke;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: transparent;
+  color: aliceblue;
+  padding: 8px 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.btn-to-refresh:hover{
+  color: rgb(88, 131, 102);
+  border-color: rgb(88, 131, 102);
+}
+
+.link-to-refresh{
+  color: whitesmoke;
 }
 
  .auth-box {
@@ -28,12 +89,11 @@
   padding: 45px 50px;
   border-radius: 24px; 
   box-shadow: 0 15px 35px rgba(139, 115, 106, 0.08); 
-  top:50%;
-  left: 50%;
-  transform: translate(-50% -50%);
   width: 100%;
   max-width: 420px;
   text-align: center;
+  align-self: center;
+  margin-top: 110px;
 }
 
 .campo-form input{
@@ -80,7 +140,7 @@
   background-color: #fdfaf9; 
   font-size: 15px;
   color: #000000;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -94,12 +154,12 @@
   width: 100%;
   padding: 15px;
   margin-top: 15px;
-  background-color: rgba(59, 117, 54, 0.94); 
-  color: rgb(0, 0, 0);
+  background-color: rgba(30, 74, 27, 0.94); 
+  color: rgb(225, 255, 234);
   border: none;
   border-radius: 12px;
-  font-size: 16px;
-  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -107,7 +167,7 @@
 }
 
 .btn-accedi:hover {
-  background-color: #044b1f;
+  background-color: #08381b;
 }
 
 .btn-accedi:active {

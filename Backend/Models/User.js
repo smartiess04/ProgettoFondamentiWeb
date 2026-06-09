@@ -4,7 +4,6 @@ const bcrypt= require ('bcrypt');
 const userModel= new mongoose.Schema({
     name: {
         type: String,
-        required: [true,'Inserire il nome'],
         trim: true, //per rimuovere gli sapzi vuoti all'inzio e alla fine della stringa,
         minlength: [2,'Il nome deve avere almeno due caratteri']
     },
@@ -47,17 +46,12 @@ const userModel= new mongoose.Schema({
 
 
 //Per intercettare il salvataggio della Password, che viene hashata
-userModel.pre("save",function (next) {
-    let user= this;
-    if(!user.isModified(password)){
-        return next()
+userModel.pre("save", async function () {
+    if (!this.isModified('password')) {
+        return;
     }
-    else {bcrypt.hash(user.password,10)
-    .then(hash=>{user.password=hash
-        next();
-    })
-    .catch(error=> {console.error(error)})
-}
+
+    this.password = await bcrypt.hash(this.password, 10);
 });
 
 //Per il login

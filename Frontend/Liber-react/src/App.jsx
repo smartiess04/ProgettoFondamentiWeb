@@ -2,9 +2,16 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom';
 import './App.css'
 
-
-import RefreshPage from './pages/refreshpage';
+import { useAuth } from "./context/AuthContext";
+import RefreshPage from './pages/RefreshPage';
 import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+
+function ProtectedRoute({ children }) {
+    const { user, loading } = useAuth();
+    if (loading) return <p className="loading">Caricamento...</p>;
+  return user ? children : <Navigate to="/LoginPage" />;
+}
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,13 +22,16 @@ function App() {
       <Routes>
         <Route path= "/" element={<RefreshPage/>}/>
         <Route path= "/LoginPage" element={<LoginPage/>}/>
+        <Route path="/HomePage" element={
+                    <ProtectedRoute><HomePage /></ProtectedRoute>
+        } />
 
      </Routes>
     </BrowserRouter>
   
      <footer className='footer'>
                 <p>Corso di Fondamenti Web 25/26 Martina Cataleta, Francesca Teresa Rosa Augello, Giuseppe Galetta</p>
-            </footer> 
+      </footer> 
     </>
   )
 }

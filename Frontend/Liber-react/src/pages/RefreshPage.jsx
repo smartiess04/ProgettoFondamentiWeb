@@ -16,7 +16,7 @@ export default function RefreshPage(){
                         <span className="titolo-app">Liber</span>
                     </div>
                     <div className="nav-destra">
-                       <Link  className= "btn-refresh link-refresh" to="/LoginPage">Login</Link>
+                       <Link  className= "btn-refresh link-refresh" to="/LoginPage">Accedi</Link>
                     </div>
                 </nav>
             </header>
@@ -28,7 +28,7 @@ export default function RefreshPage(){
             </main>
 
             <h3>
-                 <a className = 'refresh-call2action' href= ""> Pronto a voltare pagina? Registrati ora. </a>
+                 <Link className = 'refresh-call2action' to="/LoginPage"> Pronto a voltare pagina? Registrati ora. </Link>
             </h3>
             
             
