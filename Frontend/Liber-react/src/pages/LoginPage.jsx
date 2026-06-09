@@ -6,6 +6,23 @@ import "../style/LoginPage.css"
 export default function LoginPage(){
     const [isRegister, setIsRegister] = useState(false);
     const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+
+    async function submitHandler(e){
+        e.preventDefault();
+        try{
+            if (isRegister){
+                await register(username,email,password);
+            }else{
+                await login(email,password);
+            }
+            navigate("/HomePage")
+        }
+        catch (err) {
+            setError(err.message);
+        }
+     } 
     
     
 
@@ -17,7 +34,7 @@ export default function LoginPage(){
                     <h1>{isRegister? "Registrati" : "Accedi"}</h1>
                     {error && <p>{error}</p>}
 
-                        <form>
+                        <form onSubmit={submitHandler}>
                             {isRegister && (
                                 <div className="campo-form">
                                 <label htmlFor="username">Username:</label>
