@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import  '../style/RefreshPage.css'
 import Logo from "../components/Logo"
 
@@ -23,18 +22,21 @@ export default function RefreshPage(){
             </header>
 
             <main className='titoli-refresh'>
-                <h2>Le storie uniscono,Liber le connette</h2>
+                <h1>Le storie uniscono,  Liber le connette</h1>
                 <h3>Niente più letture solitarie. Scopri un sito unico in cui tracciare le tue tappe, 
-                    scambiare opinioni autentiche e vivere ogni libro insieme ad una community che ama leggere quanto te...</h3>
+                    scambiare opinioni autentiche e vivere ogni libro insieme ad una community che ama leggere quanto te!</h3>
             </main>
 
+            <h3>
+                 <a className = 'refresh-call2action' href= ""> Pronto a voltare pagina? Registrati ora. </a>
+            </h3>
+            
+            
             <footer className='footer-refresh'>
                 <p>Corso di Fondamenti Web 25/26 Martina Cataleta, Francesca Teresa Rosa Augello, Giuseppe Galetta</p>
             </footer>
-            
+
         </div>
-        
-        
         
          </>
 
