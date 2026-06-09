@@ -1,5 +1,7 @@
 import  '../style/RefreshPage.css'
+import {Link, useNavigate} from "react-router-dom";
 import Logo from "../components/Logo"
+
 
 
 export default function RefreshPage(){
@@ -14,8 +16,7 @@ export default function RefreshPage(){
                         <span className="titolo-app">Liber</span>
                     </div>
                     <div className="nav-destra">
-                        <button className= "btn-refresh">Login</button>
-                        <button className="btn-refresh">Registrati</button>
+                       <Link  className= "btn-refresh link-refresh" to="/LoginPage">Login</Link>
                     </div>
                 </nav>
             </header>
