@@ -1,18 +1,18 @@
 const API_BASE = "/api/v1";
 
-// Funzione base per fare le richieste
+// Funzione base per gestire le richieste
 async function request(endpoint, options = {}) {
-    // 1. IL SEGRETO DEI COOKIE: Diciamo al browser di inviare sempre i cookie sicuri
+    
+    // Options.credentials include dice al browser di inviare e ricevere i cookies
     options.credentials = "include";
     options.headers = { "Content-Type": "application/json", ...options.headers };
 
     let res = await fetch(`${API_BASE}${endpoint}`, options);
 
-    // 2. LOGICA DI REFRESH AUTOMATICO
-    // Se il server ci dice che l'Access Token è scaduto (401)
+    // Se il server ci dice che l'Access Token è scaduto (401) e non stiamo facendo ne login ne il refresh in background
     if (res.status === 401 && endpoint !== "/auth/login" && endpoint !== "/auth/refresh") {
         try {
-            // Proviamo a rinfrescare la sessione in background
+            // Proviamo a vedere se possiamo fare il refresh dell'access token
             const refreshRes = await fetch(`${API_BASE}/auth/refresh`, { 
                 method: "POST", 
                 credentials: "include" 
@@ -20,7 +20,7 @@ async function request(endpoint, options = {}) {
             
             if (!refreshRes.ok) throw new Error("Sessione scaduta");
 
-            // Se il refresh ha successo (nuovo cookie impostato dal backend!), riproviamo la chiamata originale
+            // Se il refresh ha successo viene ripristinato l'access token, riproviamo la chiamata originale
             res = await fetch(`${API_BASE}${endpoint}`, options);
         } catch (err) {
             // Se il refresh fallisce, forziamo il logout visivo
@@ -35,7 +35,7 @@ async function request(endpoint, options = {}) {
     return data;
 }
 
-// ========= Rotte di Autenticazione =========
+// Rotte di autenticazione
 export async function login(email, password) {
     return request("/auth/login", {
         method: "POST",

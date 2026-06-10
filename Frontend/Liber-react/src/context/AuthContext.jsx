@@ -7,6 +7,7 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // controlla se l'utente ha precedentemente fatto il logout o se ci sono dati ad esso relativi nel localStorage
     useEffect(() => {
         // Al caricamento dell'app, recuperiamo solo le info pubbliche dell'utente
         const storedUser = localStorage.getItem("liber_user");
@@ -18,7 +19,7 @@ export function AuthProvider({ children }) {
     }, []);
 
     async function login(email, password) {
-        // Il backend imposterà automaticamente i cookie durante questa chiamata
+        
         const data = await apiLogin(email, password);
 
         // Noi salviamo nel frontend solo le info base dell'utente
