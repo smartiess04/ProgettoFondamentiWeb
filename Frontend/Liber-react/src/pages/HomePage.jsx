@@ -1,8 +1,12 @@
 import {useState} from "react"
 import { Link, useNavigate } from "react-router-dom"
+import Navbar from "../components/Navbar"
+import "../style/HomePage.css"
 
 export default function HomePage(){
     return(
-      <h1>CIAO</h1>  
+      <div className="sfondo-home-page">
+        <Navbar/>
+      </div>
     )    
 }

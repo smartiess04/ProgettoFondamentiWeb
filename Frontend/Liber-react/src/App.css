@@ -17,3 +17,65 @@
   text-align: center;
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
+
+.navbar-box {
+  display: flex;
+  width: 100%;
+  padding: 20px 50px;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.navbar-box nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-sinistra {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.titolo-app {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.titolo-app:hover{
+  cursor: pointer;
+  color: yellowgreen;
+}
+
+
+.nav-destra ul {
+  display: flex;
+  gap: 55px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 25px;
+}
+
+.nav-destra a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.nav-destra a:hover{
+  color: whitesmoke;
+  text-decoration: underline;
+}
+
+.nav-destra li {
+  color: whitesmoke;
+}
+
+.nav-destra li:hover{
+  text-decoration: underline;
+}
