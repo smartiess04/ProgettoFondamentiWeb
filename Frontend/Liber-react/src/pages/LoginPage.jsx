@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() { 
     const { login, register } = useAuth();
-    
+
     const [isRegister, setIsRegister] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
@@ -30,7 +30,6 @@ export default function LoginPage() {
             setError(err.message);
         }
      } 
-    
     
 
     return(
