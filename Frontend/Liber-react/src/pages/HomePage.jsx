@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import CardBook from "../components/CardBook"
 import "../style/HomePage.css"
+import ilSignoreDegliAnelli from "../assets/ilSignoreDegliAnelli.jpg"
 
 export default function HomePage(){
     return(
@@ -13,8 +14,8 @@ export default function HomePage(){
 
         <div className="books-containers">
         <CardBook
-          coverUrl="https://placeholder.com"
-          booktile="Il Signore degli Anelli"
+          coverUrl={ilSignoreDegliAnelli}
+          booktitle="Il Signore degli Anelli"
           author="J.R.R. Tolkien"
           genere="Fantasy"
           pagine="1200"

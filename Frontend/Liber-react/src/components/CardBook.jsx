@@ -18,10 +18,10 @@ const toggleFavorite= (e)=>{
          <div className="card-box" onClick={(e)=>{
             e.preventDefault();
             setIsOpen(!isOpen)}}> 
-            <img src={props.coverUrl} alt={props.booktile} className="book-cover"/>
+            <img src={props.copertinaUrl} alt={props.titolo} className="book-cover"/>
                 <div className="book-card-overlay">
-                    <h2 className="book-title">{props.booktile}</h2>
-                    <p className="author">{props.author}</p>
+                    <h2 className="book-title">{props.titolo}</h2>
+                    <p className="author">{props.autore}</p>
                 </div>
 
                {isOpen && (

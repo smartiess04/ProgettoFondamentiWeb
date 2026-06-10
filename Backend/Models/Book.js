@@ -13,17 +13,18 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    pagineTotali: {
+    pagine: {
         type: Number,
         required: true
     },
     editore: {
         type: String
     },
-    isbn : {
-        type: String,
-        unique: true
+
+    anno: {
+        type: Number
     },
+
     copertinaURL: {
         type: String
     },
