@@ -12,3 +12,34 @@
   margin: 0;
   padding: 0;
 }
+
+/* --- CONTENITORE SOTTO LA NAVBAR --- */
+.homepage-content {
+  width: 100%;
+  padding-left: 40px; 
+  padding-right: 40px;
+  padding-bottom: 40px;
+  /* Spinge in basso le card così non finiscono SOTTO la Navbar */
+  padding-top: 120px; 
+  box-sizing: border-box;
+}
+ 
+/* --- LA FILA DELLE CARD --- */
+.books-container {
+  display: flex !important;         
+  flex-direction: row !important;  
+  gap: 24px;                      
+  flex-wrap: wrap;               
+  justify-content: center;        
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.books-containers {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px; 
+  justify-content: center; 
+  padding: 20px;
+}
