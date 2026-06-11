@@ -17,23 +17,14 @@ const bookSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    editore: {
-        type: String
-    },
-
     anno: {
         type: Number
     },
 
     copertinaURL: {
-        type: String
-    },
-    descrizione: {
-        type: String
-    },
-    linkAcquisto: {
-        type: String
-    }
+        type: String,
+        default: ' '
+    } 
 },{
     timestamps: true
 })

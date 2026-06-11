@@ -1,0 +1,117 @@
+
+[{  
+    "titolo": "1984",
+    "autore": "George Orwell",
+    "genere": "Fantascienza / Distopia",
+    "pagine": 328,
+    "anno": 1949,
+    "copertinaURL": "frontend/Liber-react/src/assets/ilSignoreDegliAnelli.jpg"
+
+},
+{  "titolo": "Orgoglio e Pregiudizio",
+    "autore": "Jane Austen",
+    "genere": "Classico / Romanzo",
+    "pagine": 432,
+    "anno": 1813,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/8259422-L.jpg"
+},
+{
+    "titolo": "Harry Potter e la Pietra Filosofale",
+    "autore": "J.K. Rowling",
+    "genere": "Fantasy",
+    "pagine": 304,
+    "anno": 1997,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/10521270-L.jpg"
+
+},
+{
+    "titolo": "Il Nome della Rosa",
+    "autore": "Umberto Eco",
+    "genere": "Giallo Storico",
+    "pagine": 503,
+    "anno": 1980,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/14418659-L.jpg"
+},
+{
+    "titolo": "Fahrenheit 451",
+    "autore": "Ray Bradbury",
+    "genere": "Fantascienza / Distopia",
+    "pagine": 256,
+    "anno": 1953,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/13010530-L.jpg"
+
+},
+  {"titolo": "Il Ritratto di Dorian Gray",
+    "autore": "Oscar Wilde",
+    "genere": "Gotico / Filosofico",
+    "pagine": 254,
+    "anno": 1890,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/10398642-L.jpg"
+  },
+{
+    "titolo": "Il Trono di Spade",
+    "autore": "George R.R. Martin",
+    "genere": "Fantasy",
+    "pagine": 694,
+    "anno": 1996,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/8254823-L.jpg"
+},
+{
+    "titolo": "Il Grande Gatsby",
+    "autore": "F. Scott Fitzgerald",
+    "genere": "Classico Contemporaneo",
+    "pagine": 180,
+    "anno": 1925,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/8287514-L.jpg"
+},
+{
+    "titolo": "La coscienza di Zeno",
+    "autore": "Italo Svevo",
+    "genere": "Romanzo Psicologico",
+    "pagine": 438,
+    "anno": 1923,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/1234567-L.jpg"
+},
+{
+    "titolo": "Madame Bovary",
+    "autore": "Gustave Flaubert",
+    "genere": "Realismo",
+    "pagine": 384,
+    "anno": 1856,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/8287532-L.jpg"
+},
+{
+    "titolo": "La Metamorfosi",
+    "autore": "Franz Kafka",
+    "genere": "Racconto",
+    "pagine": 104,
+    "anno": 1915,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/8354123-L.jpg"
+},
+{
+    "titolo": "American Gods",
+    "autore": "Neil Gaiman",
+    "genere": "Fantasy Contemporaneo",
+    "pagine": 528,
+    "anno": 2001,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/8254821-L.jpg"
+},
+{
+    "titolo": "Percy Jackson e gli dei dell'Olimpo: Il ladro di fulmini",
+    "autore": "Rick Riordan",
+    "genere": "Fantasy / Young Adult",
+    "pagine": 361,
+    "anno": 2005,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/10423156-L.jpg"
+},
+{   
+    "titolo": "Antigone",
+    "autore": "Sofocle",
+    "genere": "Tragedia",
+    "pagine": 144,
+    "anno": -442,
+    "copertinaURL": "https://covers.openlibrary.org/b/id/10542318-L.jpg"
+}
+
+
+]
