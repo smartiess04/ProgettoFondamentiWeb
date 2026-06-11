@@ -1,9 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-
 export default function BookInfoPanel({ book }) {
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite= (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      setIsFavorite(!isFavorite)
+  }
   if (!book) return null;
+
 
   return (
     <div className="book-info-panel">
@@ -23,11 +31,11 @@ export default function BookInfoPanel({ book }) {
         <h1 className="book-info__title">{book.titolo}</h1>
         <h2 className="book-info__author">di {book.autore}</h2>
 
-        {/* Metadati dal tuo DB */}
         <div className="book-info_aggiuntive">
           <span className="aggiuntive-tag bg-genre">{book.genere}</span>
           <span className="aggiuntive-tag bg-info">📄 {book.pagine} pagine</span>
           {book.anno && <span className="aggiuntive-tag bg-info">📅 Anno: {book.anno}</span>}
+          <button className="aggiuntive-tag" onClick={toggleFavorite}>⭐️ {isFavorite?"Preferito":"NonPreferito"}</button>
         </div>
 
         <hr className="book-info__divider" />
