@@ -9,6 +9,7 @@ export default function HomePage() {
  
   const [libri, setLibri] = useState([]);
   const [inCaricamento, setInCaricamento] = useState(true);
+  const [testoRicerca, setTestoRicerca] = useState("");
 
   useEffect(() => {
      getBooks()
@@ -18,15 +19,24 @@ export default function HomePage() {
       .catch((error) => console.error("Errore:", error));
   }, []);
 
+  const libriFiltrati = libri.filter((libro) => 
+    libro.titolo.toLowerCase().includes(testoRicerca.toLowerCase()) ||
+    libro.autore.toLowerCase().includes(testoRicerca.toLowerCase())
+  );
+    
+
   return (
     <div className="sfondo-home-page">
       <Navbar />
+        <div className="search-bar">
+          <input type="text" placeholder="cerca libro o autore..." value={testoRicerca} onChange={(e)=>{setTestoRicerca(e.target.value) }}></input>
+        </div>
       <main className="home-page-content">
         {inCaricamento ? (
           <h2 style={{ color: "white", textAlign: "center" }}>Caricamento...</h2>
         ) : (
           <div className="books-containers">
-            {libri.map((libro) => (
+            {libriFiltrati.map((libro) => (
               <CardBook
                 key={libro._id}
                 copertinaURL={libro.copertinaURL}
