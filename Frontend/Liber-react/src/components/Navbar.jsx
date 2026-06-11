@@ -1,8 +1,24 @@
-import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import "../App.css";
+import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar(){
+
+    const {logout} = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogoutClick = async (e) => {
+        e.preventDefault(); 
+        try {
+            await logout(); 
+            navigate("/");
+        } catch (error) {
+            console.error("Errore durante il logout:", error);
+        }
+    };
+
     return(
 
         <>
@@ -21,7 +37,11 @@ export default function Navbar(){
                             <li ><Link to = "/HomePage">Home</Link></li>
                             <li>Profilo</li>
                             <li>Biblioteca</li>
-                            <li><Link to = "/">Logout</Link></li>
+                            <li>
+                                <a href="/" onClick={handleLogoutClick} className="logout-link">
+                                    Logout
+                                </a>
+                            </li>
                         </ul>
                     </div>    
 
