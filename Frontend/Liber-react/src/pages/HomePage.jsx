@@ -3,17 +3,17 @@ import Navbar from "../components/Navbar";
 import CardBook from "../components/CardBook";
 import "../style/HomePage.css";
 
+import { getBooks } from "../services/api";
+
 export default function HomePage() {
  
   const [libri, setLibri] = useState([]);
   const [inCaricamento, setInCaricamento] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/books')
-      .then((response) => response.json())
-      .then((data) => {
-        setLibri(data);
-        setInCaricamento(false);
+     getBooks()
+      .then((data) =>{setLibri(data);
+        setInCaricamento(false)
       })
       .catch((error) => console.error("Errore:", error));
   }, []);

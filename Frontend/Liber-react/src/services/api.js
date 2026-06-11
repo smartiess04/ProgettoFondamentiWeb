@@ -55,3 +55,12 @@ export async function logout() {
         method: "POST"
     });
 }
+
+
+//Rotte dei libri
+export async function getBooks(){
+    return request("/books",{
+        method: "GET"
+
+    })
+}
