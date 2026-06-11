@@ -29,7 +29,7 @@ export default function HomePage() {
             {libri.map((libro) => (
               <CardBook
                 key={libro._id}
-                copertinarURL={libro.copertinaURL}
+                copertinaURL={libro.copertinaURL}
                 titolo={libro.titolo}
                 author={libro.autore}
                 genere={libro.genere}

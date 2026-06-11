@@ -5,15 +5,14 @@
     "genere": "Fantascienza / Distopia",
     "pagine": 328,
     "anno": 1949,
-    "copertinaURL": "frontend/Liber-react/src/assets/ilSignoreDegliAnelli.jpg"
-
+    "copertinaURL": "https://openlibrary.org/works/OL11326416W/1984_(adaptation)?edition=key%3A/books/OL22819394M"
 },
 {  "titolo": "Orgoglio e Pregiudizio",
     "autore": "Jane Austen",
     "genere": "Classico / Romanzo",
     "pagine": 432,
     "anno": 1813,
-    "copertinaURL": "https://covers.openlibrary.org/b/id/8259422-L.jpg"
+    "copertinaURL": "https://openlibrary.org/works/OL66554W/Pride_and_Prejudice?edition=key%3A/books/OL33021878M"
 },
 {
     "titolo": "Harry Potter e la Pietra Filosofale",
@@ -21,7 +20,7 @@
     "genere": "Fantasy",
     "pagine": 304,
     "anno": 1997,
-    "copertinaURL": "https://covers.openlibrary.org/b/id/10521270-L.jpg"
+    "copertinaURL": "https://openlibrary.org/works/OL82563W/Harry_Potter_and_the_Philosopher's_Stone?edition=key%3A/books/OL9073667M"
 
 },
 {
@@ -30,7 +29,7 @@
     "genere": "Giallo Storico",
     "pagine": 503,
     "anno": 1980,
-    "copertinaURL": "https://covers.openlibrary.org/b/id/14418659-L.jpg"
+    "copertinaURL": "https://openlibrary.org/works/OL35986141W/EL_NOMBRE_DE_LA_ROSA?edition=key%3A/books/OL48577889M"
 },
 {
     "titolo": "Fahrenheit 451",
@@ -38,7 +37,7 @@
     "genere": "Fantascienza / Distopia",
     "pagine": 256,
     "anno": 1953,
-    "copertinaURL": "https://covers.openlibrary.org/b/id/13010530-L.jpg"
+    "copertinaURL": "https://covers.openlibrary.org/b/id/14414397-L.jpg"
 
 },
   {"titolo": "Il Ritratto di Dorian Gray",
@@ -46,7 +45,7 @@
     "genere": "Gotico / Filosofico",
     "pagine": 254,
     "anno": 1890,
-    "copertinaURL": "https://covers.openlibrary.org/b/id/10398642-L.jpg"
+    "copertinaURL": "https://covers.openlibrary.org/b/id/14314700-L.jpg"
   },
 {
     "titolo": "Il Trono di Spade",
@@ -54,7 +53,7 @@
     "genere": "Fantasy",
     "pagine": 694,
     "anno": 1996,
-    "copertinaURL": "https://covers.openlibrary.org/b/id/8254823-L.jpg"
+    "copertinaURL": "https://openlibrary.org/works/OL27055034W/Il_trono_di_spade._Libro_primo_delle_Cronache_del_ghiaccio_e_del_fuoco?edition=key%3A/books/OL36684708M"
 },
 {
     "titolo": "Il Grande Gatsby",
