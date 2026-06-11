@@ -6,6 +6,7 @@ import { useAuth } from "./context/AuthContext";
 import RefreshPage from './pages/RefreshPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
+import { BookPage } from './pages/BookPage';
 
 function ProtectedRoute({ children }) {
     const { user, loading } = useAuth();
@@ -25,6 +26,9 @@ function App() {
         <Route path="/HomePage" element={
                     <ProtectedRoute><HomePage /></ProtectedRoute>
         } />
+        <Route path="/BookPage" element={
+          <ProtectedRoute><BookPage /></ProtectedRoute>} 
+        />
 
      </Routes>
     </BrowserRouter>

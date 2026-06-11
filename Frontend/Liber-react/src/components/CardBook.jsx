@@ -31,7 +31,7 @@ const toggleFavorite= (e)=>{
                         <li><u>Pagine:</u>{ props.pagine}</li>
                         <li><u>Anno:</u> {props.anno}</li>
                         <li><button className="button-favorite" onClick={toggleFavorite}>⭐️ {isFavorite?"Preferito":"NonPreferito"}</button></li>
-                        <li><Link className="link-2-discussione" to="/DiscussionePage">Discussione</Link></li>
+                        <li><Link className="link-2-discussione" to="/BookPage" state={{ book: { titolo: props.titolo, autore: props.autore || props.author, genere: props.genere, pagine: props.pagine, anno: props.anno, copertinaURL: props.copertinaURL } }}>Scopri di più</Link></li>
                         
                    </ul>
 
