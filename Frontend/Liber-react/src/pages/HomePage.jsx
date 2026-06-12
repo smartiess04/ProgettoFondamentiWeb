@@ -6,7 +6,7 @@ import "../style/HomePage.css";
 import { getBooks } from "../services/api";
 
 export default function HomePage() {
- 
+  
   const [libri, setLibri] = useState([]);
   const [inCaricamento, setInCaricamento] = useState(true);
   const [testoRicerca, setTestoRicerca] = useState("");
@@ -24,8 +24,9 @@ export default function HomePage() {
     libro.autore.toLowerCase().includes(testoRicerca.toLowerCase())
   );
     
-
+  
   return (
+    <> 
     <div className="sfondo-home-page">
       <Navbar />
         <div className="search-bar">
@@ -52,5 +53,6 @@ export default function HomePage() {
         )}
       </main>
     </div>
+    </>
   );
 }

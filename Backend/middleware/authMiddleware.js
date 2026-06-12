@@ -9,7 +9,7 @@ function verifyToken(req,res,next){
     try{
         const decoded= jwt.verify(token,process.env.JWT_SECRET)
        
-        req.user = { id: decoded.user._id };
+        req.user = { id: decoded.userId };
 
         next();
     }catch(error){

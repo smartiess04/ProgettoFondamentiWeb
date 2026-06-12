@@ -1,5 +1,6 @@
 const mongoose= require('mongoose');
 const Book= require('../models/Book');
+const User = require('../models/User');
 
 const getBooks= async (req,res)=>{
     try{
@@ -10,38 +11,53 @@ const getBooks= async (req,res)=>{
     }
 }
 
+const getFavorites= async (req,res)=>{
+    try{
+        const userId= req.user._id;
+        //uso populate perchè altrimenti non si riuscirebbe a recuperare la copertina (avremmo solo i gli Id dei libri)
+        const user= await User.findById(userId).populate('preferiti');
+         if (!user) {
+            return res.status(404).json({ message: "Utente non trovato" });
+        }
+        const favorites= user.preferiti;
+        res.status(200).json(favorites);
+    }catch(error){
+        res.status(500).json({ message: "Errore nel recupero dei preferiti"}) 
+    }
+}
+
 const toggleFavorite = async (req, res) => {
     try {
         // Il middleware ci passerà l'ID dell'utente loggato dentro req.user
         const userId = req.user._id;
-        // leggiamo il libro scelto
+        // leggiamo il libro scelto (usiamo params perchè l'oggetto si prende dall'URL, è piu specifico invece del body)
         const bookId = req.params.id;
         
+        //va a prendere tutte le inf0 dell'utente richiesto 
         const user = await User.findById(userId);
 
         if (!user) {
             return res.status(404).json({ message: "Utente non trovato" });
         }
 
-        // 4. CONTROLLIAMO LA TUA LISTA DEI PREFERITI
         // Controlliamo se l'ID del libro è già dentro l'array "preferiti"
-        const giaPreferito = user.preferiti.includes(bookId);
+        const alreadyFav = user.preferiti.includes(bookId);
 
-        if (giaPreferito) {
-            // IL LIBRO C'È GIÀ: Lo togliamo dalla lista
-            // filter() crea una nuova lista tenendo solo i libri DIVERSI da quello cliccato
+        if (alreadyFav) {
+            // se il libro è gia preferito, lo tolgo dalla lista 
+            // filter() crea una nuova lista tenendo solo i libri DIVERSI da quello cliccato (uso il metodo filter per rimuovere elemento da array)
             user.preferiti = user.preferiti.filter((id) => id.toString() !== bookId.toString());
         } else {
-            // IL LIBRO NON C'È: Lo aggiungiamo alla lista
+            // il libro non c'è: Lo aggiungiamo alla lista
             user.preferiti.push(bookId);
         }
 
-        // 5. SALVIAMO LA SCHEDA NEL DATABASE
+        // salviamo la scheda del database
         await user.save();
 
-        // 6. AVVISIAMO CHE È TUTTO FATTO
+        // avvisiamo che è stato fatto
         return res.status(200).json({ 
-            message: giaPreferito ? "Libro rimosso" : "Libro aggiunto",
+            message: alreadyFav ? "Libro rimosso" : "Libro aggiunto",
             preferiti: user.preferiti // Mandiamo indietro la lista aggiornata
         });
 
@@ -53,5 +69,7 @@ const toggleFavorite = async (req, res) => {
 
 
 module.exports={
-    getBooks
+    getBooks,
+    toggleFavorite,
+    getFavorites
 }

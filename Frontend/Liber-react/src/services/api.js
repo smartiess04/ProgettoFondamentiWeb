@@ -64,3 +64,10 @@ export async function getBooks(){
 
     })
 }
+
+export async function getFavorites(){
+    return request("/biblioteca", {
+        method: "GET"
+    })
+}
+
