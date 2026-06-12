@@ -8,6 +8,22 @@ import { getFavorites } from "../services/api";
 
 export default function BibliotecaPage(){
    const [libriPreferiti, setLibriPreferiti] = useState([]);
+   const [testoRicerca, setTestoRicerca]=  useState(" ");
+   const [inCaricamento, setInCaricamento] = useState(true);
+
+   useEffect(() => {
+        getFavorites()
+         .then((data) =>{setLibriPreferiti(data);
+           setInCaricamento(false)
+         })
+         .catch((error) => console.error("Errore:", error));
+     }, []);
+
+    const libriFiltrati = libriPreferiti.filter((libro) => 
+    libro.titolo.toLowerCase().includes(testoRicerca.toLowerCase()) ||
+    libro.autore.toLowerCase().includes(testoRicerca.toLowerCase())
+  );
+
 
 
 

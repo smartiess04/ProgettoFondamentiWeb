@@ -71,3 +71,10 @@ export async function getFavorites(){
     })
 }
 
+export async function toggleFavorite(bookId) {
+    return request(`/books/favorites/${bookId}`, {
+        method: "POST",
+        body: JSON.stringify({ bookId }),
+    });
+}
+
