@@ -1,4 +1,4 @@
-const mongoose= require ("mongoose");
+const mongoose= require ('mongoose');
 const bcrypt= require ('bcrypt');
 
 const userModel= new mongoose.Schema({
@@ -26,6 +26,12 @@ const userModel= new mongoose.Schema({
         minlength: [6,'La password deve contenere almeno 6 caratteri'],
         select: false //Di default nasconde sempre questo campo quando vengono chiesti i dati dell'utente
     },
+    preferiti:[{
+
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Book'
+
+    }],
     avatar: {
         type: String,
         default: 'https://api.dicebear.com/10.x/icons/svg?seed=Felix'

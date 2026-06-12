@@ -39,6 +39,7 @@ export default function HomePage() {
             {libriFiltrati.map((libro) => (
               <CardBook
                 key={libro._id}
+                id={libro._id}
                 copertinaURL={libro.copertinaURL}
                 titolo={libro.titolo}
                 author={libro.autore}

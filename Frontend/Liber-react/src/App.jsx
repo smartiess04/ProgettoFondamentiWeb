@@ -7,6 +7,7 @@ import RefreshPage from './pages/RefreshPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import { BookPage } from './pages/BookPage';
+import BibliotecaPage from './pages/BibliotecaPage';
 
 function ProtectedRoute({ children }) {
     const { user, loading } = useAuth();
@@ -27,10 +28,12 @@ function App() {
                     <ProtectedRoute><HomePage /></ProtectedRoute>
         } />
         <Route path="/BookPage" element={
-          <ProtectedRoute><BookPage /></ProtectedRoute>} 
+                    <ProtectedRoute><BookPage /></ProtectedRoute>} 
         />
-
-     </Routes>
+        <Route path="/BibliotecaPage" element={
+                    <ProtectedRoute><BibliotecaPage /></ProtectedRoute>} 
+        />
+      </Routes>
     </BrowserRouter>
   
      <footer className='footer'>

@@ -36,7 +36,7 @@ export default function Navbar(){
                         <ul>
                             <li ><Link to = "/HomePage">Home</Link></li>
                             <li>Profilo</li>
-                            <li>Biblioteca</li>
+                            <li><Link to= "/BibliotecaPage">Biblioteca</Link></li>
                             <li>
                                 <a href="/" onClick={handleLogoutClick} className="logout-link">
                                     Logout
