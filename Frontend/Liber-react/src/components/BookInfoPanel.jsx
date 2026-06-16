@@ -5,11 +5,7 @@ export default function BookInfoPanel({ book }) {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const toggleFavorite= (e)=>{
-      e.preventDefault();
-      e.stopPropagation();
-      setIsFavorite(!isFavorite)
-  }
+ 
   if (!book) return null;
 
 
@@ -35,7 +31,6 @@ export default function BookInfoPanel({ book }) {
           <span className="aggiuntive-tag bg-genre">{book.genere}</span>
           <span className="aggiuntive-tag bg-info">📄 {book.pagine} pagine</span>
           {book.anno && <span className="aggiuntive-tag bg-info">📅 Anno: {book.anno}</span>}
-          <button className="aggiuntive-tag" onClick={toggleFavorite}>⭐️ {isFavorite?"Preferito":"NonPreferito"}</button>
         </div>
 
         <hr className="book-info__divider" />
