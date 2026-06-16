@@ -1,9 +1,9 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { login as apiLogin, register as apiRegister, logout as apiLogout } from "../services/api";
 
-const AuthContext = createContext(null);
+const AuthContext = createContext(null); //creiamo e settiamo a null
 
-export function AuthProvider({ children }) {
+export function AuthProvider({ children }) { //lo dichiariamo...tutto cio che c'è all'interno deve essere posto "al di sotto"->children
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -15,20 +15,21 @@ export function AuthProvider({ children }) {
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
-        setLoading(false);
+        setLoading(false); //non sto aspettando piu dati..rimpiazzo loading con altre componenti
     }, []);
+
 
     async function login(email, password) {
         
-        const data = await apiLogin(email, password);
+        const data = await apiLogin(email, password); //utilizza l'api di login
 
         // Noi salviamo nel frontend solo le info base dell'utente
         localStorage.setItem("liber_user", JSON.stringify(data.user));
         setUser(data.user);
     }
-
+ 
     async function register(username, email, password) {
-        await apiRegister(username, email, password);
+        await apiRegister(username, email, password);  //chiamata api di registrazione
         await login(email, password); // Logghiamo automaticamente l'utente appena registrato
     }
 
