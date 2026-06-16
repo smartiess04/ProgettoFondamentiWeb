@@ -1,19 +1,25 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import { Link } from "react-router-dom";
 import {toggleFavorite} from "../services/api"
 
 export default function CardBox(props){
 const [isOpen, setIsOpen] = useState(false);
-const [isFavorite, setIsFavorite] = useState(false);
+const [isFavorite, setIsFavorite] = useState(props.isFavorite || false);
+
+useEffect(() => {
+    setIsFavorite(props.isFavorite || false);
+}, [props.isFavorite]);
 
 const toggleFavoriteHandler= async (e)=>{
     e.preventDefault();
     e.stopPropagation();
-    console.log("CLICCATO! props.id vale:", props.id);
-    console.log("Tutto l'oggetto props è:", props);
     try{
-        await toggleFavorite(props.id),
-         setIsFavorite(!isFavorite)
+        await toggleFavorite(props.id);
+        const newFavoriteState = !isFavorite;
+        setIsFavorite(newFavoriteState);
+        if (props.onFavoriteToggle) {
+            props.onFavoriteToggle(props.id, newFavoriteState);
+        }
     }catch (error) {
       console.error("Impossibile salvare il preferito:", error);
       alert("Devi fare il login per salvare i libri ai preferiti!");
@@ -30,7 +36,7 @@ const toggleFavoriteHandler= async (e)=>{
             <img src={props.copertinaURL} alt={props.titolo} className="book-cover"/>
                 <div className="book-card-overlay">
                     <h2 className="book-title">{props.titolo}</h2>
-                    <p className="author">{props.autore}</p>
+                    <p className="author">{props.autore || props.author}</p>
                 </div>
 
                {isOpen && (

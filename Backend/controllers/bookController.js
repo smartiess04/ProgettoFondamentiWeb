@@ -13,7 +13,7 @@ const getBooks= async (req,res)=>{
 
 const getFavorites= async (req,res)=>{
     try{
-        const userId= req.user._id;
+        const userId= req.user.id;
         //uso populate perchè altrimenti non si riuscirebbe a recuperare la copertina (avremmo solo i gli Id dei libri)
         const user= await User.findById(userId).populate('preferiti');
          if (!user) {
@@ -29,7 +29,7 @@ const getFavorites= async (req,res)=>{
 const toggleFavorite = async (req, res) => {
     try {
         // Il middleware ci passerà l'ID dell'utente loggato dentro req.user
-        const userId = req.user._id;
+        const userId = req.user.id;
         // leggiamo il libro scelto (usiamo params perchè l'oggetto si prende dall'URL, è piu specifico invece del body)
         const bookId = req.params.id;
         

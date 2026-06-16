@@ -66,13 +66,13 @@ export async function getBooks(){
 }
 
 export async function getFavorites(){
-    return request("/biblioteca", {
+    return request("/books/biblioteca", {
         method: "GET"
     })
 }
 
 export async function toggleFavorite(bookId) {
-    return request(`/books/favorites/${bookId}`, {
+    return request(`/books/${bookId}/favorite`, {
         method: "POST",
         body: JSON.stringify({ bookId }),
     });

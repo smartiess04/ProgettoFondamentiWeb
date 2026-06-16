@@ -8,7 +8,7 @@ import { getFavorites } from "../services/api";
 
 export default function BibliotecaPage(){
    const [libriPreferiti, setLibriPreferiti] = useState([]);
-   const [testoRicerca, setTestoRicerca]=  useState(" ");
+   const [testoRicerca, setTestoRicerca]=  useState("");
    const [inCaricamento, setInCaricamento] = useState(true);
 
    useEffect(() => {
@@ -18,6 +18,10 @@ export default function BibliotecaPage(){
          })
          .catch((error) => console.error("Errore:", error));
      }, []);
+
+    const handleFavoriteToggle = (bookId) => {
+        setLibriPreferiti((prev) => prev.filter((libro) => libro._id !== bookId));
+    };
 
     const libriFiltrati = libriPreferiti.filter((libro) => 
     libro.titolo.toLowerCase().includes(testoRicerca.toLowerCase()) ||
@@ -49,6 +53,8 @@ export default function BibliotecaPage(){
                       genere={libro.genere}
                       pagine={libro.pagine}
                       anno={libro.anno}
+                      isFavorite={true}
+                      onFavoriteToggle={handleFavoriteToggle}
                     />
                   ))}
                 </div>
