@@ -35,7 +35,7 @@ export default function Navbar(){
                     <div className = "nav-destra">
                         <ul>
                             <li ><Link to = "/HomePage">Home</Link></li>
-                            <li>Profilo</li>
+                            <li><Link to ="/ProfiloPage">Profilo</Link></li>
                             <li><Link to= "/BibliotecaPage">Biblioteca</Link></li>
                             <li>
                                 <a href="/" onClick={handleLogoutClick} className="logout-link">

@@ -28,10 +28,7 @@ export default function BibliotecaPage(){
     libro.autore.toLowerCase().includes(testoRicerca.toLowerCase())
   );
 
-
-
-
-   return(
+  return(
       <>
        <div className="sfondo-home-page">
             <Navbar />
