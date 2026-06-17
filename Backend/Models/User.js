@@ -36,7 +36,7 @@ const userModel= new mongoose.Schema({
         type: String,
         default: 'https://api.dicebear.com/10.x/icons/svg?seed=Felix'
     },
-    prefererenzeGenere: {
+    prefererenzaGenere: {
         type: String,
         enum: ['Classici','Fantasy','Gialli','Sci-fi','Romantici','Storici','Biografici','Psicologia']
     },

@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 const cookieParser= require ("cookie-parser");
 const authRoutes= require("./routes/authRoutes");
 const bookRoutes= require("./routes/bookRoutes");
+const userRoutes= require("./routes/userRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,8 +20,9 @@ app.use(cookieParser()); //JWT va nel cookie
 
 
 //gestione rotte
-app.use(`/api/v1/auth`,authRoutes);
+app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/books',bookRoutes);
+app.use('/api/v1/users',userRoutes);
 
 
 app.get("/", (req, res) => {
