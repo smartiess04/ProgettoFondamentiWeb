@@ -20,7 +20,7 @@ export default function BibliotecaPage(){
      }, []);
 
     const handleFavoriteToggle = (bookId) => {
-        setLibriPreferiti((prev) => prev.filter((libro) => libro._id !== bookId));
+        setLibriPreferiti(() => libriPreferiti.filter((libro) => libro._id !== bookId));
     };
 
     const libriFiltrati = libriPreferiti.filter((libro) => 
