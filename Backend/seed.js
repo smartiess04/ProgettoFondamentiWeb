@@ -35,7 +35,7 @@ async function seed() {
             username: 'FraLoca',
             email: 'francesca@example.com',
             password: 'password123',
-            avatar: 'https://example.com/francesca.jpg',
+            avatar: '🐿️',
             prefererenzeGenere: 'Gialli',
             bio: 'Amo leggere e condividere le mie opinioni sui libri!',
         });

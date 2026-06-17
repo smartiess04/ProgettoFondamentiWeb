@@ -34,7 +34,7 @@ const userModel= new mongoose.Schema({
     }],
     avatar: {
         type: String,
-        default: 'https://api.dicebear.com/10.x/icons/svg?seed=Felix'
+        default: '🐿️'
     },
     prefererenzeGenere: {
         type: String,
