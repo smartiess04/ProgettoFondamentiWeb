@@ -74,7 +74,21 @@ export async function getFavorites(){
 export async function toggleFavorite(bookId) {
     return request(`/books/${bookId}/favorite`, {
         method: "POST",
-        body: JSON.stringify({ bookId }),
+        body: JSON.stringify({ bookId }) //forse ridondante
     });
+}
+
+//Rotte dell'utente
+export async function getInfoUser(){
+    return request('/users', {
+        method: "GET"
+    })
+}
+
+export async function modifyUser(datiModificati){
+    return request(`/users/profile`, {
+        method: "PUT",
+        body: JSON.stringify(datiModificati)
+    })
 }
 
