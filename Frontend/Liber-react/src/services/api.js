@@ -92,3 +92,21 @@ export async function modifyUser(datiModificati){
     })
 }
 
+//Rotte delle reviews
+export async function getReviews(bookId){
+    return request(`/books/${bookId}/reviews`);
+}
+
+export async function createReviews(bookId){
+    return request (`/books/${bookId}/reviews`,{
+        method: "POST",
+        body: JSON.stringify(bookId)
+    })
+}
+
+export async function deleteReviews(bookId,reviewId){
+    return request (`/books/${bookId}/reviews/${reviewId}`,{
+        method: "DELETE"
+    })
+}
+

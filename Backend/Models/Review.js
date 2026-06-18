@@ -6,7 +6,7 @@ const reviewModel= new mongoose.Schema({
         ref: 'Book',
         required: true
     },
-    userId: {
+    author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true

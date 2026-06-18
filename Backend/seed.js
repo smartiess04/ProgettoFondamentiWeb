@@ -53,19 +53,19 @@ async function seed() {
 
         const reviews = [
             {
-                userId: francesca._id,
+                author: francesca._id,
                 bookId: createdBooks[0]._id, // Il Signore degli Anelli
                 voto: 5,
                 commento: "Il miglior libro fantasy mai scritto. Capolavoro assoluto!",
             }, 
             {
-                userId: francesca._id,
+                author: francesca._id,
                 bookId: createdBooks[1]._id, // 1984
                 voto: 4,
                 commento: "Inquietante e spaventosamente attuale.",
             }, 
             {
-                userId: francesca._id,
+                author: francesca._id,
                 bookId: createdBooks[2]._id, // Orgoglio e Pregiudizio
                 voto: 5,
                 commento: "Un classico indimenticabile, l'ho riletto tre volte.",

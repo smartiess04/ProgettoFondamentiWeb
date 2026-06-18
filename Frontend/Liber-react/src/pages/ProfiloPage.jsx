@@ -1,22 +1,22 @@
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
-import { getInfoUser, modifyUser } from "../services/api"; // Importiamo le tue API
+import { getInfoUser, modifyUser } from "../services/api"; 
 import "../style/ProfiloPage.css";
 
 const EMOJI_SET = ["👤", "🦊", "🦉", "🦁", "🦄", "👽", "🤖", "👻", "🤓", "🕵🏻‍♂️", "🧙🏼‍♂️", "👾"];
 
 export default function ProfiloPage() {
     const [open, setIsOpen] = useState(false);
-    const [profile, setProfile] = useState(false); // true = modalità modifica, false = visualizzazione
+    const [profile, setProfile] = useState(false); 
 
-    // Stati locali per mappare i campi attuali (coerenti con le chiavi del Backend)
+
     const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [avatar, setAvatar] = useState("🐿️");
     const [preferenzaGenere, setPreferenzaGenere] = useState("Classici");
     const [bio, setBio] = useState("");
 
-    // 1. All'avvio della pagina recuperiamo i dati reali dell'utente registrato nel DB
+    //All'avvio della pagina recuperiamo i dati reali dell'utente registrato nel DB
     useEffect(() => {
         const caricaDatiUtente = async () => {
             try {
@@ -39,7 +39,7 @@ export default function ProfiloPage() {
         setAvatar(nuovoAvatar);
     };
 
-    // 2. Funzione che gestisce il click del bottone Modifica / Salva
+    //Funzione che gestisce il click del bottone Modifica / Salva
     const handleButtonClick = async (e) => {
         e.preventDefault();
 
