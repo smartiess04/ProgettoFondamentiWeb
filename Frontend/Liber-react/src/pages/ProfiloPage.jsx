@@ -128,6 +128,8 @@ export default function ProfiloPage() {
                                         <option value="Storici">Storici</option>
                                         <option value="Psicologia">Psicologia</option>
                                         <option value="Biografico">Biografico</option>
+                                        <option value="Thriller">Thriller</option>
+                                        <option value="Drammatici">Drammatici</option>
                                     </select>
                                 </span>
                                 <span className="modifica-profilo">

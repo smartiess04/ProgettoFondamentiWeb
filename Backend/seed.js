@@ -13,7 +13,6 @@ const Book = require('./models/Book');
 const Chat = require('./models/Chat');
 const Message = require('./models/Message');
 const Review = require('./models/Review');
-const ReadingProgress = require('./models/ReadingProgress');
 
 async function seed() {
     try {
@@ -27,7 +26,6 @@ async function seed() {
         await Chat.deleteMany({});
         await Message.deleteMany({});
         await Review.deleteMany({});
-        await ReadingProgress.deleteMany({});
         console.log('Collezioni svuotate');
 
         const francesca = await User.create({
