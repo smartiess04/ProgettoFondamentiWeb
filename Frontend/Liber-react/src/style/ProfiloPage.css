@@ -162,3 +162,48 @@
 .btn-modifica-btn:active {
   box-shadow: 0 2px 4px rgba(44, 76, 59, 0.15);
 }
+
+/* MEDIA QUERIES RESPONSIVE */
+
+@media (max-width: 768px) {
+  .profile-box {
+    padding: 30px;
+    width: 95%;
+  }
+
+  .profile-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .modifica-profilo {
+    justify-content: center;
+  }
+
+  .elementi-profilebox {
+    align-items: center;
+  }
+
+  .elementi-profilebox input[type="text"],
+  .elementi-profilebox select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-box {
+    padding: 20px;
+  }
+
+  .icona-profilo {
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+  }
+
+  .title-profile-page {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}

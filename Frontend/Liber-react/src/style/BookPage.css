@@ -9,14 +9,23 @@
     height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: column; 
+    flex-direction: row; 
+    justify-content: center;
     align-items: flex-start;
-    gap: 15px; 
+    gap: 30px; 
     font-family: 'Plus Jakarta Sans', sans-serif;
     padding: 120px 40px 40px 40px;
     margin: 0;
     box-sizing: border-box;
     overflow: hidden; 
+}
+
+.book-page-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    max-width: 940px;
 }
 
 /* STILE INFO LIBRO */
@@ -26,7 +35,7 @@
   gap: 40px;
   width: 100%;
   max-width: 940px;
-  margin-left: 20px;
+  margin-left: 0px;
   box-sizing: border-box;
   margin-top: -110px;
 }
@@ -127,7 +136,7 @@
 .review-panel {
     width: 100%;
     max-width: 940px; 
-    margin-left: 20px; 
+    margin-left: 0px; 
     flex-shrink: 1; 
     box-sizing: border-box;
 }
@@ -219,12 +228,10 @@
 
 /* --- CONTENITORE RECENSIONI --- */
 .review-visualizer {
-    position: absolute;
-    top: 120px;
-    right: 100px;
-    
     /* Miglioriamo la gestione dimensioni */
-    width: 700px; /* Larghezza fissa più sicura rispetto a calc() */
+    width: 100%;
+    max-width: 550px;
+    flex-shrink: 0;
     max-height: calc(100vh - 160px); 
     
     /* Estetica aggiornata: sfondo più scuro e leggibile */
@@ -300,4 +307,80 @@
     transition: all 0.3s ease;
     align-self: flex-end; 
     margin-top: 10px;
+}
+
+/* MEDIA QUERIES RESPONSIVE */
+
+@media (max-width: 1024px) {
+    .sfondo-book-page {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding-top: 120px;
+        padding-bottom: 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-page-left-column {
+        width: 100%;
+        align-items: center;
+    }
+
+    .book-info-panel {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .review-panel {
+        margin-left: 0;
+    }
+
+    /* Rimuoviamo position: absolute per i display ridotti */
+    .review-visualizer {
+        width: 100%;
+        max-width: 940px;
+        margin-top: 20px;
+        max-height: 500px; /* Imposta altezza massima per lo scrolling interno */
+    }
+}
+
+@media (max-width: 768px) {
+    .book-info__cover-wrapper {
+        width: 200px;
+        height: 300px;
+    }
+
+    .sfondo-book-page {
+        padding: 100px 20px 20px 20px;
+    }
+
+    .book-info__title {
+        font-size: 26px;
+    }
+
+    .book-info__author {
+        font-size: 16px;
+    }
+
+    .btn-invia-recensione, .cancella-recensione {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .box-recensione {
+        padding: 15px;
+    }
+
+    .review-visualizer {
+        padding: 15px;
+    }
+
+    .titolo-recensioni {
+        font-size: 1.1rem;
+    }
 }

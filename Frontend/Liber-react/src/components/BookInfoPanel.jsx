@@ -38,7 +38,7 @@ export default function BookInfoPanel({ book }) {
           <h3>Descrizione</h3>
           <p className="book-info__text">
             {book.descrizione || book.trama || 
-              `"${book.titolo}" è un'opera straordinaria scritta da ${book.autore}. All'interno di Liber, questo volume della categoria ${book.genere} funge da punto d'incontro virtuale per lettori e appassionati. Usa lo spazio chat a destra per commentare i capitoli in tempo reale con la community o lascia la tua recensione personale in fondo alla pagina.`}
+              `"${book.titolo}" è un'opera straordinaria scritta da ${book.autore}. All'interno di Liber, questo volume della categoria ${book.genere} funge da punto d'incontro virtuale per lettori e appassionati. Usa lo spazio per le recensioni per commentare i capitoli con la community.`}
           </p>
         </div>
 

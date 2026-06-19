@@ -199,3 +199,44 @@ header {
   text-decoration-color: #000000;
 }
 
+/* MEDIA QUERIES RESPONSIVE */
+
+@media (max-width: 768px) {
+  .nav-login {
+    padding: 15px 20px;
+  }
+  
+  .auth-box {
+    padding: 35px 30px;
+    margin-top: 80px;
+    width: 90%;
+  }
+
+  .auth-box h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-login {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .auth-box {
+    padding: 25px 20px;
+    margin-top: 50px;
+    width: 95%;
+  }
+
+  .auth-box h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .btn-to-refresh {
+    font-size: 16px;
+    padding: 6px 14px;
+  }
+}

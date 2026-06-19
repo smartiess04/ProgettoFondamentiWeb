@@ -55,14 +55,17 @@
  
 /* LA FILA DELLE CARD */
 .books-containers {
-  display: flex !important;         
-  flex-direction: row !important;  
+  display: grid !important;         
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 24px;                      
-  flex-wrap: wrap;               
-  justify-content: flex-start;        
-  align-items: flex-start;
   width: 100%;
   box-sizing: border-box;
+}
+
+.books-containers .card-box {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 2 / 3;
 }
 
 .books-container {
@@ -93,5 +96,36 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+/* MEDIA QUERIES RESPONSIVE */
 
+@media (max-width: 768px) {
+  .home-page-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
+  .search-bar input {
+    width: 70%;
+  }
+
+  .books-containers {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    padding: 10px;
+  }
+
+  .search-bar input {
+    width: 90%;
+    font-size: 1em;
+  }
+
+  .books-containers {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+}

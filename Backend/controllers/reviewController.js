@@ -21,7 +21,14 @@ const createReviews= async(req,res)=>{
         commento,voto,bookId: req.params.id, author: req.user.id
         });
 
-        const populated = await review.populate('author', 'username')
+        const populated = await review.populate('author', 'username');
+        
+        // Invia l'evento tramite Socket.io a tutti i client
+        const io = req.app.get("io");
+        if (io) {
+            io.emit("new_review", populated);
+        }
+        
         res.status(201).json(populated);
     }
     catch(error){
@@ -40,7 +47,14 @@ const deleteReviews= async(req,res)=>{
         return res.status(403).json({ message: "Non puoi cancellare la review" });
       }
       await Review.findByIdAndDelete(req.params.reviewId);
-        res.json({ message: "Review eliminata" });
+
+      // Invia l'evento tramite Socket.io a tutti i client
+      const io = req.app.get("io");
+      if (io) {
+          io.emit("delete_review", req.params.reviewId);
+      }
+
+      res.json({ message: "Review eliminata" });
     }
     catch(error){
         res.status(500).json({ message: 'Errore nella cancellazione della review'});

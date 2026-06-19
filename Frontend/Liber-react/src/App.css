@@ -167,7 +167,42 @@
   color: inherit;
   color: chocolate;
 }
+
+/* MEDIA QUERIES RESPONSIVE */
+
+/* Tablet e schermi intermedi */
+@media (max-width: 768px) {
+  .navbar-box {
+    padding: 15px 20px;
+  }
   
+  .nav-destra ul {
+    gap: 20px;
+    font-size: 20px;
+  }
+  
+  .card-box {
+    width: 150px;
+    height: 225px;
+  }
+}
 
-
-
+/* Smartphone e schermi piccoli */
+@media (max-width: 480px) {
+  .navbar-box nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-destra ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    font-size: 18px;
+  }
+  
+  .card-box {
+    width: 130px;
+    height: 195px;
+  }
+}

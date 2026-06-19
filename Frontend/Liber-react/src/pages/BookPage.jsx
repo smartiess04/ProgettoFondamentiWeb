@@ -15,8 +15,10 @@ export function BookPage(){
         <>
             <Navbar/>
             <div className="sfondo-book-page">
-                <BookInfoPanel book={book} />
-                <ReviewPanel book={book} /> 
+                <div className="book-page-left-column">
+                    <BookInfoPanel book={book} />
+                    <ReviewPanel book={book} /> 
+                </div>
                 <ReviewVisualizer book={book}/>
             </div>
         </>
