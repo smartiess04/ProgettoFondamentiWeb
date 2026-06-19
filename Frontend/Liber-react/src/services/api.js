@@ -97,11 +97,11 @@ export async function getReviews(bookId){
     return request(`/books/${bookId}/reviews`);
 }
 
-export async function createReviews(bookId){
-    return request (`/books/${bookId}/reviews`,{
+export async function createReviews(bookId, reviewData) {
+    return request(`/books/${bookId}/reviews`, {
         method: "POST",
-        body: JSON.stringify(bookId)
-    })
+        body: JSON.stringify(reviewData) 
+    });
 }
 
 export async function deleteReviews(bookId,reviewId){

@@ -2,6 +2,8 @@ import { useLocation, Navigate } from "react-router-dom";
 import BookInfoPanel from "../components/BookInfoPanel";
 import "../style/BookPage.css";
 import Navbar from "../components/Navbar";
+import ReviewPanel from "../components/ReviewPanel";
+import ReviewVisualizer from "../components/ReviewVisualizer";
 
 export function BookPage(){
     const location = useLocation();
@@ -14,6 +16,8 @@ export function BookPage(){
             <Navbar/>
             <div className="sfondo-book-page">
                 <BookInfoPanel book={book} />
+                <ReviewPanel book={book} /> 
+                <ReviewVisualizer book={book}/>
             </div>
         </>
     );

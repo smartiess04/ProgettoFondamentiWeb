@@ -24,7 +24,7 @@ app.use(cookieParser()); //JWT va nel cookie
 app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/books',bookRoutes);
 app.use('/api/v1/users',userRoutes);
-app.use('/api/v1/reviews',reviewRoutes);
+app.use('/api/v1/books',reviewRoutes);
 
 
 app.get("/", (req, res) => {

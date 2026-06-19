@@ -3,13 +3,12 @@ import { useState, useEffect } from "react";
 
 export default function BookInfoPanel({ book }) {
 
-  const [isFavorite, setIsFavorite] = useState(false);
-
  
   if (!book) return null;
 
 
   return (
+    <>
     <div className="book-info-panel">
       
       <div className="book-info__left">
@@ -46,5 +45,6 @@ export default function BookInfoPanel({ book }) {
       </div>
 
     </div>
+    </>
   );
 }

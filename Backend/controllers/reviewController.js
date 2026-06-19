@@ -18,7 +18,7 @@ const createReviews= async(req,res)=>{
     try{
         const {voto,commento}= req.body;
         const review= await Review.create({
-        commento,voto,bookId: req.params.id, author: req.params.id
+        commento,voto,bookId: req.params.id, author: req.user.id
         });
 
         const populated = await review.populate('author', 'username')

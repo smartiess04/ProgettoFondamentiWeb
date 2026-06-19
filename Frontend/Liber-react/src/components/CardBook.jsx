@@ -39,7 +39,7 @@ const toggleFavoriteHandler= async (e)=>{
                         <li><u>Pagine:</u>{ props.pagine}</li>
                         <li><u>Anno:</u> {props.anno}</li>
                         <li><button className="button-favorite" onClick={toggleFavoriteHandler}>⭐️ {props.isFavorite?"Preferito":"NonPreferito"}</button></li>
-                        <li><Link className="link-2-discussione" to="/BookPage" state={{ book: { titolo: props.titolo, autore: props.autore || props.author, genere: props.genere, pagine: props.pagine, anno: props.anno, copertinaURL: props.copertinaURL } }}>Scopri di più</Link></li>
+                        <li><Link className="link-2-discussione" to="/BookPage" state={{ book: { _id: props.id, titolo: props.titolo, autore: props.autore || props.author, genere: props.genere, pagine: props.pagine, anno: props.anno, copertinaURL: props.copertinaURL } }}>Scopri di più</Link></li>
                         
                    </ul>
 

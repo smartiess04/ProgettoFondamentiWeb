@@ -2,20 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,500;0,800;1,400&display=swap');
 
 .sfondo-book-page {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../assets/Background_HomePage.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 120px 40px 40px 40px;
-  overflow: hidden;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  margin: 0;
-  box-sizing: border-box;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../assets/Background_HomePage.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 15px; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 120px 40px 40px 40px;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden; 
 }
 
 /* STILE INFO LIBRO */
@@ -27,7 +28,7 @@
   max-width: 940px;
   margin-left: 20px;
   box-sizing: border-box;
-  margin-top: -90px;
+  margin-top: -110px;
 }
 
 .book-info__left {
@@ -57,7 +58,7 @@
   background-color: rgba(67, 51, 36, 0.632);
   border: 1px solid whitesmoke;
   box-sizing: border-box;
-  padding: 20px 20px;
+  padding: 15px 15px;
   border-radius: 4px;
 }
 
@@ -120,4 +121,168 @@
   line-height: 1.7;
   color: #e2e8f0;
   margin: 0;
+}
+
+/* REVIEW PANEL */
+.review-panel {
+    width: 100%;
+    max-width: 940px; 
+    margin-left: 20px; 
+    flex-shrink: 1; 
+    box-sizing: border-box;
+}
+
+.box-recensione {
+    background: rgba(31, 18, 18, 0.855); 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.titolo-recensione {
+    color: #fdfbf7;
+    margin: 0;
+    font-size: 1.2rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.num-valutazione select, 
+.testo-recensione {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 12px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.num-valutazione select:focus, 
+.testo-recensione:focus {
+    border-color: #fdfbf7;
+}
+
+.num-valutazione select option, 
+.num-valutazione select optgroup {
+    background-color: #121212;
+    color: white;
+}
+
+.num-valutazione span{
+    color: white; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.testo-recensione {
+    min-height: 80px;
+    resize: none; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.testo-recensione::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+}
+
+
+.btn-invia-recensione {
+    background-color: rgba(109, 122, 213, 0.502); 
+    color: #fdfbf7;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-end; 
+    margin-top: 10px;
+}
+
+.btn-invia-recensione:hover {
+    background-color: #1f1810; 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- CONTENITORE RECENSIONI --- */
+.review-visualizer {
+    position: absolute;
+    top: 120px;
+    right: 100px;
+    
+    /* Miglioriamo la gestione dimensioni */
+    width: 700px; /* Larghezza fissa più sicura rispetto a calc() */
+    max-height: calc(100vh - 160px); 
+    
+    /* Estetica aggiornata: sfondo più scuro e leggibile */
+    background-color:  rgba(31, 18, 18, 0.948); 
+    border: 1px solid rgba(85, 68, 28, 0.348);
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Titolo delle recensioni */
+.titolo-recensioni {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(90, 105, 216, 0.791); /* Riga colorata sotto il titolo */
+}
+
+/* Lista scrollabile interna */
+.review-list-container {
+    flex-grow: 1; /* Occupa lo spazio rimanente */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    padding-right: 5px;
+}
+
+/* Scrollbar personalizzata */
+.review-list-container::-webkit-scrollbar { width: 4px; }
+.review-list-container::-webkit-scrollbar-track { background: transparent; }
+.review-list-container::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+
+/* Singola recensione */
+.singola-recensione {
+    background-color: rgba(255, 255, 255, 0.05); /* Grigio molto leggero */
+    border-left: 3px solid rgba(90, 105, 216, 0.791); 
+    padding: 12px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column; 
+    gap: 5px; 
+}
+
+/* Testo recensione */
+.info-recensione {
+    display: block; 
+    color: #e0e0e0; /* Testo più leggibile rispetto al nero/scuro */
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.info-recensione b {
+    color: rgba(90, 105, 216, 0.791); /* Un tocco di colore per le etichette (Username, etc.) */
+    font-weight: bold;
+    margin-right: 8px;
 }
