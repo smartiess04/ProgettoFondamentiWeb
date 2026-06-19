@@ -29,7 +29,7 @@ export default function ReviewVisualizer({book}){
 
         socket.on("new_review", (newReview) => {
             // Aggiungiamo la recensione solo se appartiene al libro attuale
-            if (newReview.bookId === book._id) {
+            if (String(newReview.bookId) === String(book._id)) {
                 // Mettiamo la nuova recensione in cima alla lista
                 setReviews((prevReviews) => [newReview, ...prevReviews]);
             }
