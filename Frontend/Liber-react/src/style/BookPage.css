@@ -286,3 +286,18 @@
     font-weight: bold;
     margin-right: 8px;
 }
+
+.cancella-recensione{
+    background-color: rgba(149, 23, 23, 0.821); 
+    color: #fdfbf7;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-end; 
+    margin-top: 10px;
+}

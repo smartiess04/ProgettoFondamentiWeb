@@ -1,13 +1,16 @@
 import React from "react";
 import { useEffect , useState } from "react";
-import { getReviews } from "../services/api";
+import { deleteReviews, getReviews } from "../services/api";
 import "../style/BookPage.css";
+import { useAuth } from "../context/AuthContext";
 
 
 export default function ReviewVisualizer({book}){
 
     const [reviews , setReviews] = useState([]);
     const [inCaricamento, setInCaricamento] = useState(true);
+
+    const { user } = useAuth();
 
     useEffect(() => {
          getReviews(book._id)
@@ -20,11 +23,24 @@ export default function ReviewVisualizer({book}){
                 setInCaricamento(false); // Va spento solo qui o nel .then!
             });
       }, [book._id]);
+
+      const deleteHandler = async (e, reviewId) => {
+        e.preventDefault();
+
+        try{
+            await deleteReviews(book._id, reviewId );
+            alert("Recensione eliminata con successo!");
+            
+        } catch (error) {
+            console.error("Errore durante l'eliminazione della recensione:", error);
+            alert("Si è verificato un errore durante l'eliminazione della recensione.");
+        }
+    }
+    
  
 
     return(
     <>
-        {/* ABBIAMO RIPRISTINATO IL NOME DELLA CLASSE ORIGINALE */}
         <div className="review-visualizer">
             <h2 className="titolo-recensioni">Recensioni della community</h2>
             
@@ -39,11 +55,14 @@ export default function ReviewVisualizer({book}){
                             <span className="info-recensione"><b>Username:</b> {recensione.author?.username || "Utente Sconosciuto"}</span>
                             <span className="info-recensione"><b>Valutazione:</b> {recensione.voto} / 5 ⭐</span>
                             <span className="info-recensione"><b>Commento:</b> {recensione.commento}</span>
+                            {recensione.author.username === user.username && (
+                                <button className = "cancella-recensione" onClick = { (e) => deleteHandler(e,recensione._id)} >Cancella</button>
+                            )}
                         </div>
                     ))  
                 )}
             </div>
         </div>
     </>
-)
+ )
 }
