@@ -11,8 +11,36 @@ const bookRoutes= require("./routes/bookRoutes");
 const userRoutes= require("./routes/userRoutes");
 const reviewRoutes= require("./routes/reviewRoutes");
 
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Liber API",
+            version: "1.0.0",
+            description: "Documentazione delle API per la piattaforma Liber",
+            contact: {
+                name: "Francesca Teresa Rosa Augello, Martina Cataleta, Giuseppe Galetta"
+            }
+        },
+        servers: [
+            {
+                url: "http://localhost:3000",
+                description: "Server di Liber"
+            }
+        ]
+    },
+
+    apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
 const app = express();
 const port = process.env.PORT || 3000;
+
 
 connectDB();
 
@@ -26,7 +54,7 @@ app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/books',bookRoutes);
 app.use('/api/v1/users',userRoutes);
 app.use('/api/v1/books',reviewRoutes);
-
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const expressServer = app.listen(port, () => {
   console.log(`App in ascolto su porta ${port}`);
