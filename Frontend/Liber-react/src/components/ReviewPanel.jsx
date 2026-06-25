@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { createReviews } from "../services/api"; // Rimosso deleteReviews che qui non serve
+import { createReviews } from "../services/api"; 
 
 export default function ReviewPanel({ book }) {
-
-    // 1. Aggiunto "const"
     const [voto, setVoto] = useState(1);
     const [commento, setCommento] = useState("");
 

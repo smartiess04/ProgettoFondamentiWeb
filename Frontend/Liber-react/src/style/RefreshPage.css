@@ -5,28 +5,27 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* Inchioda la grandezza allo schermo */
   height: 100vh;
   width: 100vw;
-  position: relative; /* Fa da gabbia per gli elementi con position: absolute */
-  overflow: hidden;   /* Taglia via qualsiasi cosa sbrodoli fuori dallo schermo */
+  position: relative;
+  overflow: hidden;   
  }
 
  .nav-refresh {
-  display: flex; /* Mette gli elementi in riga orizzontale */
-  justify-content: space-between; /* Spinge il logo a sinistra e i bottoni a destra */
-  align-items: center; /* Centra tutto verticalmente */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
   width: 100%;
-  padding: 20px 50px; /* Spazio interno: 20px sopra/sotto, 50px ai lati */
-  background-color: rgba(0, 0, 0, 0.4); /* Uno sfondo scuro semi-trasparente per far risaltare la barra */
-  box-sizing: border-box; /* Evita che il padding faccia sbordare la navbar fuori dallo schermo */
+  padding: 20px 50px; 
+  background-color: rgba(0, 0, 0, 0.4); 
+  box-sizing: border-box; 
 }
 
 /* Stili per la parte sinistra (Logo + Titolo) */
 .nav-sinistra {
   display: flex;
   align-items: center;
-  gap: 15px; /* Spazio tra l'icona del logo e la scritta "Liber" */
+  gap: 15px; 
 }
 
 .titolo-app {
@@ -43,8 +42,8 @@
 /* Stili per la parte destra (Lista dei link) */
 .nav-destra {
   display: flex;
-  list-style: none; /* Rimuove i fastidiosi puntini elenco (bullet points) */
-  gap: 20px; /* Spazio tra il bottone Login e Registrati */
+  list-style: none; 
+  gap: 20px; 
   margin: 0;
   padding: 0;
   display: flex;

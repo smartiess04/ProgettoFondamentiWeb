@@ -1,18 +1,18 @@
 /*LOOGO COMPONENT*/
 .logo-img{
-  width: 50px; /* Modifica questo valore per farlo più grande o più piccolo */
-  height: auto; /* Mantiene le proporzioni corrette */
+  width: 50px; 
+  height: auto; 
   object-fit: contain;
 }
 
 .footer{
   font-size: medium;
   position: absolute;
-  bottom: 0; /* Lo incolla al pavimento dello schermo */
+  bottom: 0; 
   left: 0;
-  width: 100%; /* Gli fa occupare tutta la larghezza */
+  width: 100%; 
   padding: 0px;
-  background-color: rgba(0, 0, 0, 0.6); /* Sfondo scuro per farlo leggere sulla foto */
+  background-color: rgba(0, 0, 0, 0.6); 
   color: white;
   text-align: center;
   font-family: 'Plus Jakarta Sans', sans-serif;

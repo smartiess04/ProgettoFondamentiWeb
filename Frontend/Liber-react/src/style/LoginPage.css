@@ -5,17 +5,16 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* Inchioda la grandezza allo schermo */
   height: 100vh;
   width: 100vw;
-  position: relative; /* Fa da gabbia per gli elementi con position: absolute */
-  overflow: hidden;   /* Taglia via qualsiasi cosa sbrodoli fuori dallo schermo */
+  position: relative; 
+  overflow: hidden;  
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
   min-height: 100vh; 
-  width: 100vw; /* E 100vw per "prendi tutta la larghezza" */
+  width: 100vw; 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

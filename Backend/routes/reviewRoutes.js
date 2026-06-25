@@ -7,7 +7,9 @@ const verifyToken = require('../middleware/authMiddleware');
 router.use(verifyToken);
 
 router.get("/:id/reviews",ReviewController.getReviews);
+
 router.post("/:id/reviews",ReviewController.createReviews);
+
 router.delete("/:id/reviews/:reviewId",ReviewController.deleteReviews);
 
 module.exports=router;

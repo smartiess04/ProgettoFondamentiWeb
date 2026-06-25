@@ -17,8 +17,8 @@ const port = process.env.PORT || 3000;
 connectDB();
 
 app.use(cors());
-app.use(express.json()); //intercetta e tarduce oggetto greezzo per metterlo in req.body
-app.use(cookieParser()); //JWT va nel cookie
+app.use(express.json()); 
+app.use(cookieParser()); 
 
 
 //gestione rotte
@@ -28,13 +28,10 @@ app.use('/api/v1/users',userRoutes);
 app.use('/api/v1/books',reviewRoutes);
 
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 const expressServer = app.listen(port, () => {
   console.log(`App in ascolto su porta ${port}`);
 });
+
 
 // Inizializziamo Socket.io usando direttamente il server avviato da Express
 const io = new Server(expressServer, {

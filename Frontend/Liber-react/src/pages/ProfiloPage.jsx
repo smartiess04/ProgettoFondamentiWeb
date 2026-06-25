@@ -16,7 +16,7 @@ export default function ProfiloPage() {
     const [preferenzaGenere, setPreferenzaGenere] = useState("Classici");
     const [bio, setBio] = useState("");
 
-    //All'avvio della pagina recuperiamo i dati reali dell'utente registrato nel DB
+    //recupero dati utente reale
     useEffect(() => {
         const caricaDatiUtente = async () => {
             try {
@@ -38,8 +38,6 @@ export default function ProfiloPage() {
     const choseAvatarHandler = (nuovoAvatar) => {
         setAvatar(nuovoAvatar);
     };
-
-    //Funzione che gestisce il click del bottone Modifica / Salva
     const handleButtonClick = async (e) => {
         e.preventDefault();
 
@@ -51,7 +49,6 @@ export default function ProfiloPage() {
                 
                 alert(response.message || "Profilo aggiornato con successo!");
                 
-                // Chiudiamo il selettore di emoji per pulizia grafica
                 setIsOpen(false);
             } catch (error) {
                 console.error("Errore durante il salvataggio del profilo:", error);
@@ -163,7 +160,7 @@ export default function ProfiloPage() {
                         </div>
                     )}    
 
-                    {/* Bottone Unico Modifica / Salva */}
+                    {/* Bottone Modifica / Salva */}
                     <div className="btn-modifica">
                         <button className="btn-modifica-btn" onClick={handleButtonClick}> 
                             {!profile ? "Modifica il profilo" : "Salva le modifiche"}

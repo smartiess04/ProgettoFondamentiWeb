@@ -1,7 +1,6 @@
 import Logo from "./Logo";
 import "../App.css";
 import { useAuth } from "../context/AuthContext";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar(){

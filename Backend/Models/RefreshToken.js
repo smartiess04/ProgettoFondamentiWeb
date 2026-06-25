@@ -3,7 +3,7 @@ const mongoose= require('mongoose');
 const refreshTokenSchema= new mongoose.Schema({
     userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Collegamento al modello Utente
+    ref: 'User', 
     required: true,
   },
   token: {
@@ -21,8 +21,6 @@ const refreshTokenSchema= new mongoose.Schema({
   }
 }, { timestamps: true });
 
-// Il documento verrà eliminato automaticamente dal database quando 
-// l'orario corrente supera il valore di 'expiresAt'.
 refreshTokenSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 module.exports= mongoose.model("RefreshToken",refreshTokenSchema)

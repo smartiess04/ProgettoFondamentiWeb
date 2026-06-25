@@ -2,26 +2,20 @@ const jwt = require('jsonwebtoken');
 const RefreshToken= require('../models/RefreshToken');
 const User = require('../models/User');
 
-// Metodo per registrare un nuovo utente
+
+//Metodo per registrare un utente
 async function register(req, res) {
     try {
-        //1. recupera i dati di registrazione dal corpo della richiesta del client
         const { username, email, password } = req.body;
-
-        //2. controllo se esiste già un utente con lo stesso username o email 
+        //controllo se esiste già un utente con lo stesso username o email 
         const existingUser = await User.findOne({
             $or: [{ username }, { email }]
         });
-
-        //3. restituisce messaggio di errore se esiste già un utente con lo stesso username o email
         if (existingUser) {
             return res.status(400).json({ message: 'Username or email already exists' });
         }
-
-        //4.crea un nuovo utente con i dati forniti (username, email e password), salva il nuovo utente nel database
         const newUser = await User.create({username,email,password})
 
-    //restituisce una risposta di successo al client con un messaggio e i dati dell'utente appena registrato (id, username e email)
         res.status(201).json({
             message: 'User registered successfully', 
             user: {
@@ -36,28 +30,24 @@ async function register(req, res) {
 }
 
 
-// Metodo per effettuare il login di un utente
+// Metodo per il login di un utente
 async function login(req, res) {
     try{
-        //estrarre email e password dalla richiesta del client
         const {email, password} = req.body;
 
-        //cercare utente a cui corrisponde tale email
         const user = await User.findOne({ email }).select('+password');
-
-        //se l'utente non esite
         if (!user){
-            return res.status(401).json({ message: 'Invalid email or password'}); //scrivo anche or password per evitare eventuale attacco in cui vogliono sapere se quella mail è registrata o meno, e io non glielo dico TIE'
+            return res.status(401).json({ message: 'Invalid email or password'}); //scrivo anche or password per evitare eventuale attacco in cui vogliono sapere se quella mail è registrata o meno (precauzione)
         }
-
-        //fare match della password
+        //match della password
         const passwordCorretta = await user.passwordComparison(password);
 
         if (!passwordCorretta){
             return res.status(401).json({ message: 'Invalid email or password'});
     }
 
-//TOKEN
+
+    //TOKEN
 
     const accessToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
     const refreshTokenStringa= jwt.sign({userId:user._id},process.env.REFRESH_SECRET, {expiresIn: '7d'});
@@ -106,13 +96,12 @@ async function login(req, res) {
 async function refresh(req,res){
     try{
         const cookieRefresh = req.cookies?.refreshToken;
-        
-        // controllo se il cookie relativo al Refresh Token esiste
+    
         if(!cookieRefresh){
             return res.status(401).json({message: 'Session expired. Login again'});
         }
         
-        // Adesso so che esiste quindi vado a prenderlo dal db
+        //Se esiste vado a prenderlo dal db
         const dbRefresh = await RefreshToken.findOne({token: cookieRefresh});
 
         // Controllo se sono riuscito a prelevarlo correttamente dal db, oppure se è stato cancellato perchè l'utente ha fatto logout
@@ -120,7 +109,7 @@ async function refresh(req,res){
             return res.status(403).json({message: 'Invalid or revoked session'})
         }
 
-        // Verifico l'integrità del token usando la chiave segreta del refresh
+        //Verifico l'integrità del token usando la chiave segreta del refresh
         const decoded = jwt.verify(cookieRefresh, process.env.REFRESH_SECRET);
 
         // Se è tutto valido genero il nuovo access Token
@@ -145,6 +134,9 @@ async function refresh(req,res){
     }
 }
 
+
+// Metodo per il logout di un utente
+
 async function logout(req,res){
     try{
         const refreshCookie = req.cookies?.refreshToken;
@@ -153,7 +145,6 @@ async function logout(req,res){
         if(refreshCookie) {
             await RefreshToken.deleteOne({ token: refreshCookie});
         }
-
 
         //Ripuliamo il browser dall'access cookie e dal refresh cookie
 

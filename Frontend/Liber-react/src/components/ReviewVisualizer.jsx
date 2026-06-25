@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect , useState } from "react";
 import { deleteReviews, getReviews } from "../services/api";
 import "../style/BookPage.css";
@@ -21,16 +20,14 @@ export default function ReviewVisualizer({book}){
           })
           .catch((error) => {
                 console.error("Errore:", error);
-                setInCaricamento(false); // Va spento solo qui o nel .then!
+                setInCaricamento(false); 
             });
 
-        // L'URL deve corrispondere a quello del backend
+        // L'URL uguale a quello del backend
         const socket = io("http://localhost:3000");
 
         socket.on("new_review", (newReview) => {
-            // Aggiungiamo la recensione solo se appartiene al libro attuale
             if (String(newReview.bookId) === String(book._id)) {
-                // Mettiamo la nuova recensione in cima alla lista
                 setReviews((prevReviews) => [newReview, ...prevReviews]);
             }
         });

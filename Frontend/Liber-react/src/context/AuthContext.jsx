@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { login as apiLogin, register as apiRegister, logout as apiLogout } from "../services/api";
 
-const AuthContext = createContext(null); //creiamo e settiamo a null
+const AuthContext = createContext(null); 
 
 export function AuthProvider({ children }) { //lo dichiariamo...tutto cio che c'è all'interno deve essere posto "al di sotto"->children
     const [user, setUser] = useState(null);

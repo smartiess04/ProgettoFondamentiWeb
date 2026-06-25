@@ -20,12 +20,11 @@
   padding-bottom: 70px;
   padding-top: 15px; 
   box-sizing: border-box;
-  /* LA MAGIA FLEXBOX */
   height: calc(100vh - 180px);
-  flex-grow: 1; /* Prende lo spazio restante */
-  overflow-y: auto; /* Attiva lo scroll */
+  flex-grow: 1; 
+  overflow-y: auto; 
   overflow-x: hidden;
-  min-height: 0; /* Forza il contenitore a rispettare i limiti dello schermo */
+  min-height: 0; 
 }
 
 

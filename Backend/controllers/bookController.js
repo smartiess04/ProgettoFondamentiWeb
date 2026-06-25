@@ -14,7 +14,7 @@ const getBooks= async (req,res)=>{
 const getFavorites= async (req,res)=>{
     try{
         const userId= req.user.id;
-        //uso populate perchè altrimenti non si riuscirebbe a recuperare la copertina (avremmo solo i gli Id dei libri)
+        //Uso populate per recuperare la copertina (avremmo solo gli Id dei libri)
         const user= await User.findById(userId).populate('preferiti');
          if (!user) {
             return res.status(404).json({ message: "Utente non trovato" });
@@ -28,34 +28,27 @@ const getFavorites= async (req,res)=>{
 
 const toggleFavorite = async (req, res) => {
     try {
-        // Il middleware ci passerà l'ID dell'utente loggato dentro req.user
         const userId = req.user.id;
-        // leggiamo il libro scelto (usiamo params perchè l'oggetto si prende dall'URL, è piu specifico invece del body)
+        //Leggiamo il libro scelto (params perchè l'oggetto si prende dall'URL)
         const bookId = req.params.id;
-        
-        //va a prendere tutte le inf0 dell'utente richiesto 
         const user = await User.findById(userId);
 
         if (!user) {
             return res.status(404).json({ message: "Utente non trovato" });
         }
 
-        // Controlliamo se l'ID del libro è già dentro l'array "preferiti"
+        //Controlliamo se l'ID del libro è già dentro l'array "preferiti"
         const alreadyFav = user.preferiti.includes(bookId);
 
         if (alreadyFav) {
-            // se il libro è gia preferito, lo tolgo dalla lista 
-            // filter() crea una nuova lista tenendo solo i libri DIVERSI da quello cliccato (uso il metodo filter per rimuovere elemento da array)
+            //Se il libro è gia preferito, lo tolgo dalla lista 
             user.preferiti = user.preferiti.filter((id) => id.toString() !== bookId.toString());
         } else {
-            // il libro non c'è: Lo aggiungiamo alla lista
+            //Se il libro non c'è: Lo aggiungiamo alla lista
             user.preferiti.push(bookId);
         }
-
-        // salviamo la scheda del database
         await user.save();
-
-        // avvisiamo che è stato fatto
+        //Avvisi
         return res.status(200).json({ 
             message: alreadyFav ? "Libro rimosso" : "Libro aggiunto",
             preferiti: user.preferiti // Mandiamo indietro la lista aggiornata
