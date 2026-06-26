@@ -8,6 +8,7 @@ const getBooks= async (req,res)=>{
         res.status(200).json(books);
     } catch(error){
         console.error(error);
+        res.status(500).json({ message: "Errore durante il recupero dei libri", error })
     }
 }
 

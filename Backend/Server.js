@@ -31,10 +31,23 @@ const swaggerOptions = {
                 url: "http://localhost:3000",
                 description: "Server di Liber"
             }
+        ],
+        components: {
+            securitySchemes: {
+                cookieAuth: {
+                    type: "apiKey",
+                    in: "cookie",
+                    name: "accessToken"
+                }
+            }
+        },
+        security: [
+            {
+                cookieAuth: []
+            }
         ]
     },
-
-    apis: ["./routes/*.js"],
+    apis: ["./routes/*.js"] 
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
