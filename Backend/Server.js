@@ -1,5 +1,6 @@
+const path = require('path');
 const dotenv = require("dotenv");
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../.env') }); //avendo il .env nella cartella principale del progetto
 const cors = require('cors');
 
 const express = require("express");
